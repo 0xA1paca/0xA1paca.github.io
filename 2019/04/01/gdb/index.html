@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Hello World | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="GDB常用命令介绍： r(run)          : 开始执行（不会断，可带参数）   c(continue)     : 继续执行   start           : 开始执行（断在程序入口，可带参数）     b *address      : 指定地址下断点（地址必须是可执行代码段）   bl              : 查看断点列表   del index       : 删除指">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/04/01/hello-world/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/gdb/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="GDB常用命令介绍： r(run)          : 开始执行（不会断，可带参数）   c(continue)     : 继续执行   start           : 开始执行（断在程序入口，可带参数）     b *address      : 指定地址下断点（地址必须是可执行代码段）   bl              : 查看断点列表   del index       : 删除指">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T04:46:49.847Z">
+<meta property="og:updated_time" content="2018-08-12T09:34:55.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="GDB常用命令介绍： r(run)          : 开始执行（不会断，可带参数）   c(continue)     : 继续执行   start           : 开始执行（断在程序入口，可带参数）     b *address      : 指定地址下断点（地址必须是可执行代码段）   bl              : 查看断点列表   del index       : 删除指">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -233,11 +233,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-gdb" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/04/01/hello-world/" class="article-date">
-      <time datetime="2019-04-01T04:46:49.846Z" itemprop="datePublished">2019-04-01</time>
+      <a href="/2019/04/01/gdb/" class="article-date">
+      <time datetime="2019-04-01T12:18:17.099Z" itemprop="datePublished">2019-04-01</time>
 </a>
     </div>
   
@@ -246,36 +246,39 @@
       <input type="hidden" class="isFancy">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Hello World
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="GDB常用命令介绍："><a href="#GDB常用命令介绍：" class="headerlink" title="GDB常用命令介绍："></a>GDB常用命令介绍：</h2><ul>
+<li>r(run)          : 开始执行（不会断，可带参数）  </li>
+<li>c(continue)     : 继续执行  </li>
+<li>start           : 开始执行（断在程序入口，可带参数）    </li>
+<li>b *address      : 指定地址下断点（地址必须是可执行代码段）  </li>
+<li>bl              : 查看断点列表  </li>
+<li>del index       : 删除指定断点（index可使用bl查看）  </li>
+<li>Ctrl + c        : 强制运行中的程序中断    </li>
+<li>print expr      : 打印出expr的值，如果expr是某个符号，则打印出符号对应的值。（常用于查看带符号的变量）  </li>
+<li>bt              : 显示调用堆栈的信息（常用于回溯跟踪,<a href="https://github.com/pwndbg/pwndbg" target="_blank" rel="noopener">pwndbg</a>可直接在工作窗口显示）  </li>
+<li>stack n         : 显示n个单元的栈  </li>
+<li>x/nf addr.      : 打印指定地址开始n个单元的的内存数据，f可表示单元大小（x为默认大小，b为一个字节，h为双字节，wx为四字节，gx为八字节，i表示查看指令，c表示查看字符，s表示查看字符串）    </li>
+<li><p>find expr.      : 在当前进程内存搜索expr的值，可以是整数或是字符串（在<a href="https://github.com/longld/peda" target="_blank" rel="noopener">peda</a>下使用，对应<a href="https://github.com/pwndbg/pwndbg" target="_blank" rel="noopener">pwndbg</a>的命令是search） </p>
+</li>
+<li><p>n/ni (next into)          : 单步执行（大部分情况下视一条汇编指令为一步），不会进入函数</p>
+</li>
+<li>s/si (step into)          : 单步步入，遇到函数会进入。 注：如果遇到n无法正常单步的情况下，使用s/si替代使用</li>
+<li>finish                    : 跳出当前函数</li>
+<li>return                    : 忽略之后的语句，强制函数返回</li>
+<li>list n                    : 有源码文件的情况下可列出n行当前指令对应的源码</li>
+<li>set {type} $reg/mem=expr  : 设置对应寄存器或内存指向的值为expr，type可为int、long long等</li>
+<li>set $reg=expr             : 设置对应寄存器的值为expr</li>
+<li>peda/pwndbg               : 查看可用命令（使用对应插件时使用）</li>
+<li><p>dump filename addr1 addr2 : dump指定内存到文件中，dump命令之后还会跟一些其他指令用于特定的操作，具体可到GDB中查看</p>
+</li>
+<li><p>q(quit)                   : 退出gdb</p>
+</li>
+<li>disas func 查看某函数的汇编代码</li>
+<li>info registers  查看寄存器的值</li>
+</ul>
 
       
       
@@ -331,13 +334,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/04/01/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2019/04/01/gdb/"></a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Alpaca 的个人博客">Alpaca</a></p>
-        <p><span>发布时间:</span>2019年04月01日 - 12时46分</p>
-        <p><span>最后更新:</span>2019年04月01日 - 12时46分</p>
+        <p><span>发布时间:</span>2019年04月01日 - 20时18分</p>
+        <p><span>最后更新:</span>2018年08月12日 - 17时34分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/04/01/hello-world/" title="Hello World">http://yoursite.com/2019/04/01/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/hello-world/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/01/gdb/" title>http://yoursite.com/2019/04/01/gdb/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/gdb/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -350,15 +353,20 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/04/01/My-New-Post/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/01/pwnable/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          My New Post
+          (no title)
         
       </div>
     </a>
   
+  
+    <a href="/2019/04/01/canary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -367,7 +375,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GDB常用命令介绍："><span class="toc-number">1.</span> <span class="toc-text">GDB常用命令介绍：</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -433,13 +441,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/04/01/My-New-Post/" title="上一篇: My New Post">
+            <a href="/2019/04/01/pwnable/" title="上一篇: ">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/04/01/canary/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/栈溢出/">栈溢出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/一些技巧/">一些技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/二进制方向入门提点/">二进制方向入门提点</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/二进制learning/">二进制learning</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/程序储存的分段/">程序储存的分段</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/查看指定的内存地址里面有什么/">查看指定的内存地址里面有什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/syclover培训/">syclover培训</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwnable/">pwnable</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/gdb/">gdb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/canary/">canary</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/base64/">base64</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/6-9/">6-9</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/Docker/">Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/My-New-Post/">My New Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/hello-world/">Hello World</a></li></ul>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="5-24eax返回值 printf(“str\n”);//会被优化成puts；     5-27开启了NX的return-to-libc技术遵循最小限权原则的root setuid程序会在获得用户输入之前丢掉root限权:-)     :通过调用seteuid(getuid()); so 解决方法： seteuid(0) system(“sh”) exit() question   : one 如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/二进制learning/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="5-24eax返回值 printf(“str\n”);//会被优化成puts；     5-27开启了NX的return-to-libc技术遵循最小限权原则的root setuid程序会在获得用户输入之前丢掉root限权:-)     :通过调用seteuid(getuid()); so 解决方法： seteuid(0) system(“sh”) exit() question   : one 如">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="c:/Users/admin/Desktop/Syclover-培训/heap.png">
+<meta property="og:updated_time" content="2018-06-01T10:05:59.677Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="5-24eax返回值 printf(“str\n”);//会被优化成puts；     5-27开启了NX的return-to-libc技术遵循最小限权原则的root setuid程序会在获得用户输入之前丢掉root限权:-)     :通过调用seteuid(getuid()); so 解决方法： seteuid(0) system(“sh”) exit() question   : one 如">
+<meta name="twitter:image" content="c:/Users/admin/Desktop/Syclover-培训/heap.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Alpaca</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Valar Morghulis</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/archive">所有文章</a></li>
+                        
+                            <li><a href="/friends">友情链接</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/luuman" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="#" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Alpaca</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Alpaca</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Valar Morghulis</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/archive">所有文章</a></li>
+                
+                    <li><a href="/friends">友情链接</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/luuman" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="#" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                    
+                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-二进制learning" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/01/二进制learning/" class="article-date">
+      <time datetime="2019-04-01T12:18:17.161Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="5-24"><a href="#5-24" class="headerlink" title="5-24"></a>5-24</h1><p>eax返回值</p>
+<p>printf(“str\n”);//会被优化成puts；    </p>
+<h1 id="5-27"><a href="#5-27" class="headerlink" title="5-27"></a>5-27</h1><h4 id="开启了NX的return-to-libc技术"><a href="#开启了NX的return-to-libc技术" class="headerlink" title="开启了NX的return-to-libc技术"></a>开启了NX的return-to-libc技术</h4><p>遵循最小限权原则的root setuid程序会在获得用户输入之前丢掉root限权:-)     :通过调用seteuid(getuid());</p>
+<p>so <em>解决方法</em>：</p>
+<p>seteuid(0)</p>
+<p>system(“sh”)</p>
+<p>exit()</p>
+<p><em>question</em>   : one 如何调用多个函数？two 如何输入seteuid的参数0？</p>
+<p>one 构造好栈连续调用level ret    or    调用一个函数后ret到输入函数再来一遍 直到都调用完</p>
+<p>two 嘿嘿嘿 调用sprintf或者strcpy函数四次将输入字符串的末尾\0拷贝到需要参数0的位置</p>
+<h4 id="开启了ASLR"><a href="#开启了ASLR" class="headerlink" title="开启了ASLR"></a>开启了ASLR</h4><p>32位 由于libc的随机化只有8bits 最多尝试256次可以<code>暴力破解</code>出来</p>
+<p><code>GOT覆写</code> <code>GOT引用</code> 手动寻找gadget</p>
+<p><code>custom stack</code></p>
+<p><code>stack pivoting</code></p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p><img src="C:\Users\admin\Desktop\Syclover-培训\heap.png" alt="heap"></p>
+<h5 id="堆进程管理"><a href="#堆进程管理" class="headerlink" title="堆进程管理"></a>堆进程管理</h5><p>通常情况下，运行库先向操作系统“批发”一块较大的堆空间，然后“零售”给程序使用。当全部“售完”之后或者剩余空间不能满足程序的需求时，再根据情况向操作系统“进货”。 </p>
+<p>Linux提供了两种堆空间分配的方式，一个是<code>brk()</code>系统调用，一个是<code>mmap()</code>系统调用。</p>
+<ul>
+<li>brk()</li>
+</ul>
+<p><code>brk()</code> 的声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int brk(void *addr);</span><br><span class="line"></span><br><span class="line">void *sbrk(intptr_t increment);</span><br></pre></td></tr></table></figure>
+<p>参数 <code>*addr</code> 是进程数据段的结束地址，<code>brk()</code> 通过改变该地址来改变数据段的大小，当结束地址向高地址移动，进程内存空间增大，当结束地址向低地址移动，进程内存空间减小。<code>brk()</code>调用成功时返回 0，失败时返回 -1。 <code>sbrk()</code> 与 <code>brk()</code> 类似，但是参数 <code>increment</code> 表示增量，即增加或减少的空间大小，调用成功返回<em>增加大小前</em> 的heap的结束地址，如果increment为0则返回结束地址。 失败时返回 -1。</p>
+<p>在上图中我们看到 brk 指示堆结束地址，start_brk 指示堆开始地址。BSS segment 和 heap 之间有一段 Random brk offset，这是由于 ASLR 的作用，如果关闭了 ASLR，则 Random brk offset 为 0，堆结束地址和数据段开始地址重合。 </p>
+<ul>
+<li>mmap()</li>
+</ul>
+<p><code>mmap()</code> 的声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line"></span><br><span class="line">void *mmap(void *addr, size_t len, int prot, int flags,</span><br><span class="line">    int fildes, off_t off);</span><br></pre></td></tr></table></figure>
+<p><code>mmap()</code> 函数用于创建新的虚拟内存区域，并将对象映射到这些区域中，当它不将地址空间映射到某个文件时，我们称这块空间为匿名（Anonymous）空间，匿名空间可以用来作为堆空间。<code>mmap()</code> 函数要求内核创建一个从地址 <code>addr</code> 开始的新虚拟内存区域，并将文件描述符 <code>fildes</code> 指定的对象的一个连续的片（chunk）映射到这个新区域。连续的对象片大小为 <code>len</code> 字节，从距文件开始处偏移量为 <code>off</code> 字节的地方开始。<code>prot</code> 描述虚拟内存区域的访问权限位，<code>flags</code> 描述被映射对象类型的位组成。</p>
+<p><code>munmap()</code> 则用于删除虚拟内存区域：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line"></span><br><span class="line">int munmap(void *addr, size_t len);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em>chunk 位于 malloc 返回地址减去 0x10 的位置</em>  </li>
+</ul>
+<p>每个字段的具体的解释如下</p>
+<ul>
+<li><strong>prev_size</strong>, 如果该 chunk 的<strong>物理相邻的前一地址chunk（两个指针的地址差值为前一chunk大小）</strong>是空闲的话，那该字段记录的是前一个 chunk 的大小(包括 chunk 头)。否则，该字段可以用来存储物理相邻的前一个chunk 的数据。<strong>这里的前一 chunk 指的是较低地址的 chunk</strong> 。</li>
+<li>chunk size：该 chunk 的大小，大小必须是 2 <em> SIZE_SZ 的整数倍。如果申请的内存大小不是 2 </em> SIZE_SZ 的整数倍，会被转换满足大小的最小的 2 * SIZE_SZ 的倍数。32 位系统中，SIZE_SZ 是 4；64 位系统中，SIZE_SZ 是 8。 该字段的低三个比特位对 chunk 的大小没有影响<strong>(堆内存中要求每个chunk的大小必须为8的整数倍，因此chunk size的后3位是无效的)</strong>，它们从高到低分别表示 <ul>
+<li>PREV_INUSE(P) : 记录前一个 chunk 块是否被分配。一般来说，堆中第一个被分配的内存块的 size 字段的P位都会被设置为1，以便于防止访问前面的非法内存。当一个 chunk 的 size 的 P 位为 0 时，我们能通过 prev_size 字段来获取上一个 chunk 的大小以及地址。这也方便进行空闲chunk之间的合并。</li>
+<li>IS_MMAPPED(M) ：置1表示该chunk是调用mmap而产生的（即被映射到了其他的内存空间中）</li>
+<li>NON_MAIN_ARENA(N) : 记录当前 chunk 是否属于非主线程即thread arena.</li>
+</ul>
+</li>
+</ul>
+<p>当一个 chunk 处于使用状态时，它的下一个 chunk 的 prev_size 域无效，所以下一个 chunk 的该部分也可以被当前chunk使用。<strong>这就是chunk中的空间复用。</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">chunk-&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Size of previous chunk, if unallocated (P clear)  |</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Size of chunk, in bytes                     |A|M|P|</span><br><span class="line">  mem-&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             User data starts here...                          .</span><br><span class="line">        .                                                               .</span><br><span class="line">        .             (malloc_usable_size() bytes)                      .</span><br><span class="line">next    .                                                               |</span><br><span class="line">chunk-&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             (size of chunk, but used for application data)    |</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Size of next chunk, in bytes                |A|0|1|</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+<p>被释放的 chunk 被记录在链表中（可能是循环双向链表，也可能是单向链表）。具体结构如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">chunk-&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Size of previous chunk, if unallocated (P clear)  |</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">`head:&apos; |             Size of chunk, in bytes                     |A|0|P|</span><br><span class="line">  mem-&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Forward pointer to next chunk in list             |</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Back pointer to previous chunk in list            |</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Unused space (may be 0 bytes long)                .</span><br><span class="line">        .                                                               .</span><br><span class="line"> next   .                                                               |</span><br><span class="line">chunk-&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">`foot:&apos; |             Size of chunk, in bytes                           |</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br><span class="line">        |             Size of next chunk, in bytes                |A|0|0|</span><br><span class="line">        +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span><br></pre></td></tr></table></figure>
+<p>可以发现，如果一个 chunk 处于 free 状态，那么会有两个位置记录其相应的大小</p>
+<ul>
+<li><code>fd</code>，<code>bk</code>。fd, bk等指针并不是作用于隐式链表的，而是用于加快内存分配和释放效率的显示链表bin，并且这些指针跟prev_size一样只在free chunk中存在。  chunk 处于分配状态时，从 fd 字段开始是用户的数据。chunk 空闲时，会被添加到对应的空闲管理链表中，其字段的含义如下<ul>
+<li>fd 指向下一个（非物理相邻）空闲的 chunk</li>
+<li>bk 指向上一个（非物理相邻）空闲的 chunk</li>
+<li>通过 fd 和 bk 可以将空闲的 chunk 块加入到空闲的 chunk 块链表进行统一管理</li>
+</ul>
+</li>
+<li><code>fd_nextsize</code>， <code>bk_nextsize</code>，也是只有 chunk 空闲的时候才使用，不过其用于较大的 chunk（large chunk）。<ul>
+<li>fd_nextsize 指向前一个与当前 chunk 大小不同的第一个空闲块，不包含 bin 的头指针。</li>
+<li>bk_nextsize 指向后一个与当前 chunk 大小不同的第一个空闲块，不包含 bin 的头指针。</li>
+<li>一般空闲的 large chunk 在 fd 的遍历顺序中，按照由大到小的顺序排列。这样做可以避免在寻找合适chunk 时挨个遍历。</li>
+</ul>
+</li>
+</ul>
+<p><code>bin</code>：<code>freelist</code> 用来维护一个记录freechunk <code>地址</code> 的列表，根据freechunk的大小分为4钟chunk</p>
+<ul>
+<li>Fast bin</li>
+<li>Small bin</li>
+<li>Large bin</li>
+<li>Unsorted bin</li>
+</ul>
+<p><code>bins</code> <em>数组</em> 用于记录<code>Small bin</code> <code>Large bin</code> <code>Unsorted bin</code> 包含126个bin，第<code>1</code>个bin记录<code>unsorted chunks</code>，Bin <code>2-63</code>是<code>Small bin</code>，Bin <code>64-126</code>是<code>Large bin</code> </p>
+<p><code>fastbins</code> 记录 <code>fast bin</code> 包含十个bin</p>
+<p><strong>bin的下标和我们所说的第几个bin并不是一致的。同时，bin表头的 chunk 的 prev_size 与 size 字段不能随便修改，因为这两个字段是被其它bin所利用的。</strong> <code>?????????????????</code></p>
+<p>数组中的 bin 依次介绍如下</p>
+<ol>
+<li>第一个为 unsorted bin，字如其面，这里面的 chunk 没有进行排序，存储的 chunk 比较杂。</li>
+<li>索引从 2 到 63 的 bin 称为 small bin，同一个 small bin 链表中的 chunk 的大小相同。两个相邻索引的 small bin 链表中的 chunk 大小相差的字节数为<strong>2个机器字长</strong>，即32位相差8字节，64位相差16字节。</li>
+<li>small bins 后面的 bin 被称作 large bins。large bins 中的每一个 bin 都包含一定范围内的 chunk，其中的chunk 按 fd 指针的顺序从大到小排列。相同大小的chunk同样按照最近使用顺序排列。</li>
+</ol>
+<p>此外，上述这些bin的排布都会遵循一个原则：<strong>任意两个物理相邻的空闲chunk不能在一起</strong>。</p>
+<p>需要注意的是，并不是所有的 chunk 被释放后就立即被放到 bin 中。ptmalloc 为了提高分配的速度，会把一些小的 chunk <strong>先</strong>放到 fast bins 的容器内。<strong>而且，fastbin 容器中的 chunk 的使用标记总是被置位的，所以不满足上面的原则。</strong> </p>
+<ul>
+<li>fast bin</li>
+</ul>
+<p>大多数程序经常会申请以及释放一些比较小的内存块。如果将一些较小的 chunk 释放之后发现存在与之相邻的空闲的 chunk 并将它们进行合并，那么当下一次再次申请相应大小的 chunk 时，就需要对 chunk 进行分割，这样就大大降低了堆的利用效率。<strong>因为我们把大部分时间花在了合并、分割以及中间检查的过程中。</strong>因此，ptmalloc 中专门设计了 fast bin，对应的变量就是 malloc state 中的 fastbinsY</p>
+<p>为了更加高效地利用 fast bin，glibc 采用单向链表对其中的每个 bin 进行组织，并且<strong>每个 bin 采取 LIFO 策略</strong>，最近释放的 chunk 会更早地被分配，所以会更加适合于局部性。也就是说，当用户需要的 chunk 的大小小于 fastbin 的最大大小时， ptmalloc 会首先判断 fastbin 中相应的 bin 中是否有对应大小的空闲块，如果有的话，就会直接从这个 bin 中获取 chunk。如果没有的话，ptmalloc才会做接下来的一系列操作。 </p>
+<p>默认情况下（<strong>32位系统为例</strong>）， fastbin 中默认支持最大的 chunk 的数据空间大小为 64 字节。但是其可以支持的chunk的数据空间最大为80字节。除此之外， fastbin 最多可以支持的 bin 的个数为 10 个</p>
+<p><strong>需要特别注意的是，fastbin 范围的 chunk 的 inuse 始终被置为 1。因此它们不会和其它被释放的chunk合并。</strong> </p>
+<p>但是当释放的 chunk 与该 chunk 相邻的空闲 chunk 合并后的大小大于FASTBIN_CONSOLIDATION_THRESHOLD时，内存碎片可能比较多了，我们就需要把 fast bins 中的chunk都进行合并，以减少内存碎片对系统的影响。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">   FASTBIN_CONSOLIDATION_THRESHOLD is the size of a chunk in free()</span><br><span class="line">   that triggers automatic consolidation of possibly-surrounding</span><br><span class="line">   fastbin chunks. This is a heuristic, so the exact value should not</span><br><span class="line">   matter too much. It is defined at half the default trim threshold as a</span><br><span class="line">   compromise heuristic to only attempt consolidation if it is likely</span><br><span class="line">   to lead to trimming. However, it is not dynamically tunable, since</span><br><span class="line">   consolidation reduces fragmentation surrounding large chunks even</span><br><span class="line">   if trimming is not used.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">#define FASTBIN_CONSOLIDATION_THRESHOLD (65536UL)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>unsorted bin</li>
+</ul>
+<p>unsorted bin 可以视为空闲 chunk 回归其所属 bin 之前的缓冲区。</p>
+<p>unsorted bin 处于我们之前所说的bin数组下标1处。故而 unsorted bin只有一个链表。unsorted bin 中的空闲 chunk 处于乱序状态，主要有两个来源</p>
+<ul>
+<li>当一个较大的 chunk 被分割成两半后，如果剩下的部分大于MINSIZE，就会被放到 unsorted bin 中。</li>
+<li>释放一个不属于 fast bin 的 chunk，并且该 chunk 不和 top chunk 紧邻时，该 chunk 会被首先放到 unsorted bin 中。关于 top chunk 的解释，请参考下面的介绍。</li>
+</ul>
+<p>此外，Unsorted Bin 在使用的过程中，采用的遍历顺序是 FIFO 。</p>
+<h3 id="整体介绍"><a href="#整体介绍" class="headerlink" title="整体介绍"></a>整体介绍</h3><p><strong>thread arena</strong>    —&gt; 多个 <strong>heap</strong>    —&gt; 多个 <strong>chunk</strong> </p>
+<p>​           /\             <code>_\|</code>           /\          <code>_\|</code>          /\</p>
+<p><strong>Arena Header</strong>          <strong>Heap Header</strong>      <strong>Chunk Header</strong> </p>
+<p><strong>每个thread只含有一个Arena Header ,一个thread arena（注意：不包含main thread）可以包含多个heaps,一个heap被分为多个chunk</strong> </p>
+<p><strong>1. heap_info</strong></p>
+<p>即Heap Header，因为一个thread arena（注意：不包含main thread）可以包含多个heaps，所以为了便于管理，就给每个heap分配一个heap header。那么在什么情况下一个thread arena会包含多个heaps呢?在当前heap不够用的时候，malloc会通过系统调用mmap申请新的堆空间，新的堆空间会被添加到当前thread arena中，便于管理。</p>
+<p><strong>2. malloc_state</strong></p>
+<p>即Arena Header，每个thread只含有一个Arena Header。Arena Header包含bins的信息、top chunk以及最后一个remainder chunk等(这些概念会在后文详细介绍):</p>
+<p><strong>3. malloc_chunk</strong></p>
+<p>即Chunk Header，一个heap被分为多个chunk，至于每个chunk的大小，这是根据用户的请求决定的，也就是说用户调用malloc(size)传递的size参数“就是”chunk的大小(这里给“就是”加上引号，说明这种表示并不准确，但是为了方便理解就暂时这么描述了，详细说明见后文)。每个chunk都由一个结构体malloc_chunk表示：</p>
+<h3 id="Top-Chunk"><a href="#Top-Chunk" class="headerlink" title="Top Chunk"></a>Top Chunk</h3><p>当一个chunk处于一个arena的最顶部(即最高内存地址处)的时候，就称之为top chunk。该chunk并不属于任何bin，而是在系统当前的所有free chunk(无论那种bin)都无法满足用户请求的内存大小的时候，将此chunk当做一个应急消防员，分配给用户使用。如果top chunk的大小比用户请求的大小要大的话，就将该top chunk分作两部分：1）用户请求的chunk；2）剩余的部分成为新的top chunk。否则，就需要扩展heap或分配新的heap了——<strong>在main arena中通过sbrk<em>扩展</em>heap，而在thread arena中通过mmap分配<em>新的</em>heap。</strong></p>
+<h3 id="fast-bin的初始化"><a href="#fast-bin的初始化" class="headerlink" title="fast bin的初始化"></a>fast bin的初始化</h3><p>第一次调用malloc(fast bin)的时候，系统执行<code>_int_malloc</code>函数，它发现当前fast bin居然是空的？！ 然后它hin不爽哇，就把去找small bin处理，什么？！ 你他妈也是空的 ？！ 然后它就生气了，叫来小弟<code>malloc_consolidate</code>来修理他们(对<code>malloc_state</code>结构体进行初始化)，他怎么修理的呢？来回顾一下现场：</p>
+<ol>
+<li>首先啊，他要看看fast bin是否为空，如果是空的就说明整个<code>malloc_state</code>都没完成初始化，需要对<code>malloc_state</code>初始化</li>
+<li>初始化又另外一个<code>malloc_init_state(av)</code>来完成，他先初始化除了fast bin之外的所有bins（构建双链表），然后再处理fast bins。</li>
+</ol>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/04/01/二进制learning/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Alpaca 的个人博客">Alpaca</a></p>
+        <p><span>发布时间:</span>2019年04月01日 - 20时18分</p>
+        <p><span>最后更新:</span>2018年06月01日 - 18时05分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/01/二进制learning/" title>http://yoursite.com/2019/04/01/二进制learning/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/二进制learning/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/二进制方向入门提点/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/01/程序储存的分段/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#5-24"><span class="toc-number">1.</span> <span class="toc-text">5-24</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-27"><span class="toc-number">2.</span> <span class="toc-text">5-27</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#开启了NX的return-to-libc技术"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">开启了NX的return-to-libc技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开启了ASLR"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">开启了ASLR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#堆"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#堆进程管理"><span class="toc-number">2.0.0.3.1.</span> <span class="toc-text">堆进程管理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整体介绍"><span class="toc-number">2.0.1.</span> <span class="toc-text">整体介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Top-Chunk"><span class="toc-number">2.0.2.</span> <span class="toc-text">Top Chunk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fast-bin的初始化"><span class="toc-number">2.0.3.</span> <span class="toc-text">fast bin的初始化</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'luuman',
+      repo: 'luuman.github.io',
+      oauth: {
+        client_id: '',
+        client_secret: '',
+      },
+    })
+    gitment.render('gitments')
+</script>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/04/01/二进制方向入门提点/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/04/01/程序储存的分段/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/栈溢出/">栈溢出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/一些技巧/">一些技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/二进制方向入门提点/">二进制方向入门提点</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/二进制learning/">二进制learning</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/程序储存的分段/">程序储存的分段</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/查看指定的内存地址里面有什么/">查看指定的内存地址里面有什么</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/syclover培训/">syclover培训</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwnable/">pwnable</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/gdb/">gdb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/canary/">canary</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/base64/">base64</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/6-9/">6-9</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/Docker/">Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/My-New-Post/">My New Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Alpaca
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
