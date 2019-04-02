@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>CTF_WIKI_PWN! | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="LINUX PWN 记录ctf_wiki的学习">
+<meta name="keywords" content="pwn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF_WIKI_PWN!">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/CTF_WIKI_PWN总结/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="LINUX PWN 记录ctf_wiki的学习">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-02T11:07:35.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CTF_WIKI_PWN!">
+<meta name="twitter:description" content="LINUX PWN 记录ctf_wiki的学习">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Alpaca</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Valar Morghulis</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/categories">分类</a></li>
+                        
+                            <li><a href="/friends">友情链接</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
+                            
+                                <a class="fl twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Reverse/" style="font-size: 13.33px;">Reverse</a> <a href="/tags/code/" style="font-size: 13.33px;">code</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tools/" style="font-size: 16.67px;">tools</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Less Is More</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Alpaca</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Alpaca</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Valar Morghulis</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/categories">分类</a></li>
+                
+                    <li><a href="/friends">友情链接</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
+                    
+                        <a class="twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-CTF_WIKI_PWN总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/01/CTF_WIKI_PWN总结/" class="article-date">
+      <time datetime="2019-03-31T16:00:00.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CTF_WIKI_PWN!
+    </h1>
+  
+
+	  
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/">pwn</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="LINUX-PWN"><a href="#LINUX-PWN" class="headerlink" title="LINUX PWN"></a>LINUX PWN</h1><ul>
+<li>记录ctf_wiki的学习<a id="more"></a>
+</li>
+</ul>
+<h2 id="Linux-Pwn"><a href="#Linux-Pwn" class="headerlink" title="Linux Pwn"></a>Linux Pwn</h2><h2 id="安全防护机制"><a href="#安全防护机制" class="headerlink" title="安全防护机制"></a>安全防护机制</h2><h3 id="canary"><a href="#canary" class="headerlink" title="canary"></a>canary</h3><h4 id="泄漏栈中的Canary"><a href="#泄漏栈中的Canary" class="headerlink" title="泄漏栈中的Canary"></a>泄漏栈中的Canary</h4><hr>
+<blockquote>
+<p>Canary 设计为以字节 <code>\x00</code> 结尾，本意是为了保证 Canary 可以截断字符串。<br>泄露栈中的 Canary 的思路是覆盖 Canary 的低字节，来打印出剩余的 Canary 部分。</p>
+</blockquote>
+<p>要点： <strong>读出数据</strong> <strong>栈溢出</strong></p>
+<p>比如：覆盖\x00，然后用输出函数输出并截取Canary部分 可用来栈溢出</p>
+<h4 id="one-by-one-爆破-Canary"><a href="#one-by-one-爆破-Canary" class="headerlink" title="one-by-one 爆破 Canary"></a>one-by-one 爆破 Canary</h4><p>要点：通过 fork 函数开启子进程交互Canary不变</p>
+<h4 id="劫持-stack-chk-fail-函数"><a href="#劫持-stack-chk-fail-函数" class="headerlink" title="劫持__stack_chk_fail 函数"></a>劫持__stack_chk_fail 函数</h4><p>要点：修改 GOT 表劫持这个函数</p>
+<p>例子：参见 ZCTF2017 Login，利用方式是通过 fsb 漏洞篡改 <code>__stack_chk_fail</code> 的 GOT 表，再进行 ROP 利用</p>
+<h4 id="覆盖-TLS-中储存的-Canary-值"><a href="#覆盖-TLS-中储存的-Canary-值" class="headerlink" title="覆盖 TLS 中储存的 Canary 值"></a>覆盖 TLS 中储存的 Canary 值</h4><p>要点：当溢出尺寸较大时，可以同时覆盖栈上储存的 Canary 和 TLS 储存的 Canary 实现绕过。</p>
+<p>例子：参见 StarCTF2018 babystack</p>
+<h3 id="PIE-和-ASLR"><a href="#PIE-和-ASLR" class="headerlink" title="PIE 和 ASLR"></a>PIE 和 ASLR</h3><p><strong>PIE  是无限手套，ASLR是大番薯</strong></p>
+<p><strong>PIE</strong> 在编译的过程中<strong>赋予了</strong> ELF加载到内存时其<strong>加载基址随机化</strong>的功能</p>
+<ul>
+<li>PIE编译出来的ELF如果ASLR=0，ELF的加载基址也是不会变。</li>
+</ul>
+<p><strong>ASLR</strong> 的三个级别变成了 ：</p>
+<ul>
+<li>0， 不开启任何随机化；</li>
+<li>1， 开启<strong>stack</strong>、<strong>libraries</strong> [、<strong>executable base</strong>（special libraries -^-） if PIE is enabled while compiling] 的随机化；</li>
+<li>2，开启<strong>heap</strong>随机化（相对于<strong>executable base</strong>）。</li>
+</ul>
+<h3 id="RELRO"><a href="#RELRO" class="headerlink" title="RELRO"></a>RELRO</h3><p>在没有开启 RELRO 保护的前提下，每个 libc 的函数对应的 GOT 表项是可以被修改的。</p>
+<h2 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h2><hr>
+<h3 id="stack-pivoting"><a href="#stack-pivoting" class="headerlink" title="stack pivoting"></a><strong>stack pivoting</strong></h3><p>劫持栈指针指向攻击者所能控制的内存处，然后再在相应的位置进行 ROP</p>
+<p>一般来说，我们可能在以下情况需要使用 stack pivoting</p>
+<ul>
+<li>可以控制的 <strong>栈溢出的字节数较少</strong>，难以构造较长的 ROP 链</li>
+<li>开启了 PIE 保护，<strong>栈地址未知</strong>，我们可以将栈劫持到已知的区域。</li>
+<li>其它漏洞难以利用，我们需要进行转换，比如说将栈劫持到堆空间，从而在堆上写 rop 及进行堆漏洞利用</li>
+</ul>
+<p>此外，利用 stack pivoting 有以下几个要求</p>
+<ul>
+<li>可以<strong>控制程序执行流</strong>。</li>
+<li>可以<strong>控制 sp 指针</strong>。一般来说，控制栈指针会使用 ROP，常见的控制栈指针的 gadgets 一般是</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop rsp/esp</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="frame-faking"><a href="#frame-faking" class="headerlink" title="frame faking"></a><strong>frame faking</strong></h3><p>构造一个虚假的栈帧来控制程序的执行流。</p>
+<p><strong>要求：只能控制ebp和eip，要求知道可写入地址</strong></p>
+<ul>
+<li>入口点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push ebp  # 将ebp压栈</span><br><span class="line">mov ebp, esp #将esp的值赋给ebp</span><br></pre></td></tr></table></figure>
+<ul>
+<li>出口点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">leave</span><br><span class="line">ret #pop eip，弹出栈顶元素作为程序下一个执行地址</span><br></pre></td></tr></table></figure>
+<ul>
+<li>leave 指令相当于</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov esp, ebp # 将ebp的值赋给esp</span><br><span class="line">pop ebp # 弹出ebp</span><br></pre></td></tr></table></figure>
+<p>一般栈结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buffer padding|ebp|ret addr|</span><br></pre></td></tr></table></figure>
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buffer padding|fake ebp|leave ret addr|</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fake ebp</span><br><span class="line">|</span><br><span class="line">v</span><br><span class="line">ebp2|target function addr|leave ret addr|arg1|arg2</span><br></pre></td></tr></table></figure>
+<p>then 栈结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ebp</span><br><span class="line">|</span><br><span class="line">v</span><br><span class="line">ebp2|leave ret addr|arg1|arg2</span><br></pre></td></tr></table></figure>
+<h3 id="partial-overwrite"><a href="#partial-overwrite" class="headerlink" title="partial overwrite"></a>partial overwrite</h3><p> 在开启了随机化（ASLR，PIE）后, 无论高位的地址如何变化，低 12 位的页内偏移始终是固定的, 也就是说如果我们能更改低位的偏移, 就可以在一定程度上控制程序的执行流, 绕过 PIE 保护。</p>
+<p><strong>要求：绕过PIE</strong></p>
+<hr>
+<h2 id="格式化字符串漏洞"><a href="#格式化字符串漏洞" class="headerlink" title="格式化字符串漏洞"></a>格式化字符串漏洞</h2><hr>
+<p>常用：</p>
+<ul>
+<li>%N$s</li>
+<li>%N$p</li>
+<li>%n$nx</li>
+<li>%n$n</li>
+<li>可以利用 %hhn 向某个地址写入单字节，利用 %hn 向某个地址写入双字节。</li>
+</ul>
+<h3 id="泄露任意地址内存"><a href="#泄露任意地址内存" class="headerlink" title="泄露任意地址内存"></a>泄露任意地址内存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addr%k$s</span><br></pre></td></tr></table></figure>
+<h3 id="覆盖任意地址内存"><a href="#覆盖任意地址内存" class="headerlink" title="覆盖任意地址内存"></a>覆盖任意地址内存</h3><h4 id="覆盖小数字"><a href="#覆盖小数字" class="headerlink" title="覆盖小数字"></a>覆盖小数字</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa%k$nxx</span><br></pre></td></tr></table></figure>
+<h4 id="覆盖大数字"><a href="#覆盖大数字" class="headerlink" title="覆盖大数字"></a>覆盖大数字</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p32(addr)+p32(addr+1)+p32(addr+2)+p32(addr+3)+pad1+&apos;%k$hhn&apos;+pad2+&apos;%(k+1)$hhn&apos;+pad3+&apos;%(k+1)$hhn&apos;+pad4+&apos;%(k+1)$hhn&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>小技巧总结</strong></p>
+<blockquote>
+<ol>
+<li>利用 %x 来获取对应栈的内存，但建议使用 %p，可以不用考虑位数的区别。</li>
+<li>利用 %s 来获取变量所对应地址的内容，只不过有零截断。</li>
+<li>利用 %order$x 来获取指定参数的值，利用 %order$s 来获取指定参数对应地址的内容。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p> scanf 函数会对 0a，0b，0c，00 等字符有一些奇怪的处理，，导致无法正常读入，，</p>
+</blockquote>
+<h2 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h2><hr>
+<h3 id="上界溢出"><a href="#上界溢出" class="headerlink" title="上界溢出"></a>上界溢出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 伪代码</span><br><span class="line">short int a;</span><br><span class="line"></span><br><span class="line">a = a + 1;</span><br><span class="line"># 对应的汇编</span><br><span class="line">movzx  eax, word ptr [rbp - 0x1c]</span><br><span class="line">add    eax, 1</span><br><span class="line">mov    word ptr [rbp - 0x1c], ax</span><br><span class="line"></span><br><span class="line">unsigned short int b;</span><br><span class="line"></span><br><span class="line">b = b + 1;</span><br><span class="line"># assembly code</span><br><span class="line">add    word ptr [rbp - 0x1a], 1</span><br></pre></td></tr></table></figure>
+<p>上界溢出有两种情况，一种是 <code>0x7fff + 1</code>， 另一种是 <code>0xffff + 1</code>。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>有符号短整型</th>
+<th>无符号短整型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>溢出点</td>
+<td>0x7fff + 1</td>
+<td>0xffff + 1</td>
+</tr>
+<tr>
+<td>汇编语言</td>
+<td>add    eax, 1</td>
+</tr>
+</tbody>
+</table>
+<p>mov    word ptr [rbp - 0x1c], ax | add    word ptr [rbp - 0x1a], 1 |</p>
+<p><strong>共点</strong>： 从<strong>正数</strong>变成<strong>负数 or 0</strong></p>
+<h3 id="下界溢出"><a href="#下界溢出" class="headerlink" title="下界溢出"></a>下界溢出</h3><p>第一种是 <code>sub 0x0000, 1 == 0xffff</code>，对于有符号来说 <code>0 - 1 == -1</code> 没问题，但是对于无符号来说就成了 <code>0 - 1 == 65535</code>。</p>
+<p>第二种是 <code>sub 0x8000, 1 == 0x7fff</code>，对于无符号来说是 <code>32768 - 1 == 32767</code> 是正确的，但是对于有符号来说就变成了 <code>-32768 - 1 = 32767</code>。</p>
+<p><strong>共点</strong>： 从<strong>负数 or 0</strong>变成<strong>正数</strong></p>
+<h3 id="常见情况"><a href="#常见情况" class="headerlink" title="常见情况"></a>常见情况</h3><ul>
+<li>未限制范围</li>
+<li>错误的类型转换</li>
+</ul>
+<hr>
+<h2 id="堆漏洞"><a href="#堆漏洞" class="headerlink" title="堆漏洞"></a>堆漏洞</h2><h3 id="calloc"><a href="#calloc" class="headerlink" title="calloc"></a>calloc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">calloc(0x20);</span><br><span class="line">//等同于</span><br><span class="line">ptr=malloc(0x20);</span><br><span class="line">memset(ptr,0,0x20);</span><br></pre></td></tr></table></figure>
+<p>除此之外，还有一种分配是经由 realloc 进行的，realloc 函数可以身兼 malloc 和 free 两个函数</p>
+<p>realloc 的操作并不是像字面意义上那么简单，其内部会根据不同的情况进行不同操作</p>
+<ul>
+<li>当 realloc(ptr,size) 的 size 不等于 ptr 的 size 时<ul>
+<li>如果申请 size &gt; 原来 size<ul>
+<li>如果 chunk 与 top chunk 相邻，直接扩展这个 chunk 到新 size 大小</li>
+<li>如果 chunk 与 top chunk 不相邻，相当于 free(ptr),malloc(new_size)</li>
+</ul>
+</li>
+<li>如果申请 size &lt; 原来 size<ul>
+<li>如果相差不足以容得下一个最小 chunk(64 位下 32 个字节，32 位下 16 个字节)，则保持不变</li>
+<li>如果相差可以容得下一个最小 chunk，则切割原 chunk 为两部分，free 掉后一部分</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>当 realloc(ptr,size) 的 size 等于 0 时，相当于 free(ptr)</li>
+<li>当 realloc(ptr,size) 的 size 等于 ptr 的 size，不进行任何操作</li>
+</ul>
+<p>###off-by-one 利用思路</p>
+<ol>
+<li>溢出字节为可控制任意字节：通过修改大小造成块结构之间出现重叠，从而泄露其他块数据，或是覆盖其他块数据。也可使用 NULL 字节溢出的方法</li>
+<li>溢出字节为 NULL 字节：在 size 为 0x100 的时候，溢出 NULL 字节可以使得 <code>prev_in_use</code>位被清，这样前块会被认为是 free 块。（1） 这时可以选择使用 unlink 方法（见 unlink 部分）进行处理。（2） 另外，这时 <code>prev_size</code> 域就会启用，就可以伪造 <code>prev_size</code> ，从而造成块之间发生重叠。此方法的关键在于 unlink 的时候没有检查按照 <code>prev_size</code> 找到的块的后一块（理论上是当前正在 unlink 的块）与当前正在 unlink 的块大小是否相等。</li>
+</ol>
+<p>最新版本代码中，已加入针对 2 中后一种方法的 check ，但是在 2.28 前并没有该 check 。</p>
+<h1 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h1><h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p><strong>eax</strong>：编号    <strong>ebx，ecx，edx，esi，edi</strong>:参数及顺序</p>
+<p>ROP 常见的拼凑效果是实现一次系统调用，Linux系统下对应的汇编指令是 int 0x80。执行这条指令时，被调用函数的编号应存入 <strong>eax</strong>，调用参数应按顺序存入 <strong>ebx，ecx，edx，esi，edi</strong> 中。例如，编号125对应函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mprotect (void *addr, size_t len, int prot)</span><br></pre></td></tr></table></figure>
+<p>，可用该函数将栈的属性改为可执行，这样就可以使用 shellcode 了。假如我们想利用系统调用执行这个函数，eax、ebx、ecx、edx 应该分别为“125”、内存栈的分段地址（可以通过调试工具确定）、“0x10000”（需要修改的空间长度，也许需要更长）、“7”（RWX 权限）。</p>
+<h2 id="64位传参"><a href="#64位传参" class="headerlink" title="64位传参"></a>64位传参</h2><p><strong>顺序   RDI, RSI, RDX, RCX, R8, R9, more on the stack</strong></p>
+<h2 id="libc-csu-init-妙用"><a href="#libc-csu-init-妙用" class="headerlink" title="libc_csu_init 妙用"></a>libc_csu_init 妙用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">gef➤  x/5i 0x000000000040061A</span><br><span class="line">   0x40061a &lt;__libc_csu_init+90&gt;:   pop    rbx</span><br><span class="line">   0x40061b &lt;__libc_csu_init+91&gt;:   pop    rbp</span><br><span class="line">   0x40061c &lt;__libc_csu_init+92&gt;:   pop    r12</span><br><span class="line">   0x40061e &lt;__libc_csu_init+94&gt;:   pop    r13</span><br><span class="line">   0x400620 &lt;__libc_csu_init+96&gt;:   pop    r14</span><br><span class="line">gef➤  x/5i 0x000000000040061b</span><br><span class="line">   0x40061b &lt;__libc_csu_init+91&gt;:   pop    rbp</span><br><span class="line">   0x40061c &lt;__libc_csu_init+92&gt;:   pop    r12</span><br><span class="line">   0x40061e &lt;__libc_csu_init+94&gt;:   pop    r13</span><br><span class="line">   0x400620 &lt;__libc_csu_init+96&gt;:   pop    r14</span><br><span class="line">   0x400622 &lt;__libc_csu_init+98&gt;:   pop    r15</span><br><span class="line">gef➤  x/5i 0x000000000040061A+3</span><br><span class="line">   0x40061d &lt;__libc_csu_init+93&gt;:   pop    rsp</span><br><span class="line">   0x40061e &lt;__libc_csu_init+94&gt;:   pop    r13</span><br><span class="line">   0x400620 &lt;__libc_csu_init+96&gt;:   pop    r14</span><br><span class="line">   0x400622 &lt;__libc_csu_init+98&gt;:   pop    r15</span><br><span class="line">   0x400624 &lt;__libc_csu_init+100&gt;:  ret</span><br><span class="line">gef➤  x/5i 0x000000000040061e</span><br><span class="line">   0x40061e &lt;__libc_csu_init+94&gt;:   pop    r13</span><br><span class="line">   0x400620 &lt;__libc_csu_init+96&gt;:   pop    r14</span><br><span class="line">   0x400622 &lt;__libc_csu_init+98&gt;:   pop    r15</span><br><span class="line">   0x400624 &lt;__libc_csu_init+100&gt;:  ret</span><br><span class="line">   0x400625:    nop</span><br><span class="line">gef➤  x/5i 0x000000000040061f</span><br><span class="line">   0x40061f &lt;__libc_csu_init+95&gt;:   pop    rbp</span><br><span class="line">   0x400620 &lt;__libc_csu_init+96&gt;:   pop    r14</span><br><span class="line">   0x400622 &lt;__libc_csu_init+98&gt;:   pop    r15</span><br><span class="line">   0x400624 &lt;__libc_csu_init+100&gt;:  ret</span><br><span class="line">   0x400625:    nop</span><br><span class="line">gef➤  x/5i 0x0000000000400620</span><br><span class="line">   0x400620 &lt;__libc_csu_init+96&gt;:   pop    r14</span><br><span class="line">   0x400622 &lt;__libc_csu_init+98&gt;:   pop    r15</span><br><span class="line">   0x400624 &lt;__libc_csu_init+100&gt;:  ret</span><br><span class="line">   0x400625:    nop</span><br><span class="line">   0x400626:    nop    WORD PTR cs:[rax+rax*1+0x0]</span><br><span class="line">gef➤  x/5i 0x0000000000400621</span><br><span class="line">   0x400621 &lt;__libc_csu_init+97&gt;:   pop    rsi</span><br><span class="line">   0x400622 &lt;__libc_csu_init+98&gt;:   pop    r15</span><br><span class="line">   0x400624 &lt;__libc_csu_init+100&gt;:  ret</span><br><span class="line">   0x400625:    nop</span><br><span class="line">gef➤  x/5i 0x000000000040061A+9</span><br><span class="line">   0x400623 &lt;__libc_csu_init+99&gt;:   pop    rdi</span><br><span class="line">   0x400624 &lt;__libc_csu_init+100&gt;:  ret</span><br><span class="line">   0x400625:    nop</span><br><span class="line">   0x400626:    nop    WORD PTR cs:[rax+rax*1+0x0]</span><br><span class="line">   0x400630 &lt;__libc_csu_fini&gt;:  repz ret</span><br></pre></td></tr></table></figure>
+<h2 id="函数输入"><a href="#函数输入" class="headerlink" title="函数输入"></a>函数输入</h2><ul>
+<li>read 不会给输入末尾补上 ‘\0’</li>
+<li></li>
+</ul>
+<h2 id="变量的储存"><a href="#变量的储存" class="headerlink" title="变量的储存"></a>变量的储存</h2><ul>
+<li>变量的存储格式为以小端存储，即最低有效位存储在低地址</li>
+<li>已初始化的全局变量储存在代码中，不在堆栈中</li>
+</ul>
+<h2 id="hijack-GOT"><a href="#hijack-GOT" class="headerlink" title="hijack GOT"></a>hijack GOT</h2><ul>
+<li><p>这一步一般来说需要我们利用函数的漏洞来进行触发。一般利用方法有如下两种</p>
+<ul>
+<li>写入函数：write 函数。</li>
+<li>ROP</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pop eax; ret;           # printf@got -&gt; eax</span><br><span class="line">pop ebx; ret;           # (addr_offset = system_addr - printf_addr) -&gt; ebx</span><br><span class="line">add [eax] ebx; ret;     # [printf@got] = [printf@got] + addr_offset</span><br></pre></td></tr></table></figure>
+<ul>
+<li>格式化字符串任意地址写</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/04/01/CTF_WIKI_PWN总结/">CTF_WIKI_PWN!</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Alpaca 的个人博客">Alpaca</a></p>
+        <p><span>发布时间:</span>2019年04月01日 - 00时00分</p>
+        <p><span>最后更新:</span>2019年04月02日 - 19时07分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/01/CTF_WIKI_PWN总结/" title="CTF_WIKI_PWN!">http://yoursite.com/2019/04/01/CTF_WIKI_PWN总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/CTF_WIKI_PWN总结/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/pwnable/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          pwnable
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/01/gdb/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gdb</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LINUX-PWN"><span class="toc-number">1.</span> <span class="toc-text">LINUX PWN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-Pwn"><span class="toc-number">1.1.</span> <span class="toc-text">Linux Pwn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全防护机制"><span class="toc-number">1.2.</span> <span class="toc-text">安全防护机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#canary"><span class="toc-number">1.2.1.</span> <span class="toc-text">canary</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#泄漏栈中的Canary"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">泄漏栈中的Canary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#one-by-one-爆破-Canary"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">one-by-one 爆破 Canary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#劫持-stack-chk-fail-函数"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">劫持__stack_chk_fail 函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#覆盖-TLS-中储存的-Canary-值"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">覆盖 TLS 中储存的 Canary 值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PIE-和-ASLR"><span class="toc-number">1.2.2.</span> <span class="toc-text">PIE 和 ASLR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RELRO"><span class="toc-number">1.2.3.</span> <span class="toc-text">RELRO</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈溢出"><span class="toc-number">1.3.</span> <span class="toc-text">栈溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#stack-pivoting"><span class="toc-number">1.3.1.</span> <span class="toc-text">stack pivoting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#frame-faking"><span class="toc-number">1.3.2.</span> <span class="toc-text">frame faking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#partial-overwrite"><span class="toc-number">1.3.3.</span> <span class="toc-text">partial overwrite</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式化字符串漏洞"><span class="toc-number">1.4.</span> <span class="toc-text">格式化字符串漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#泄露任意地址内存"><span class="toc-number">1.4.1.</span> <span class="toc-text">泄露任意地址内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#覆盖任意地址内存"><span class="toc-number">1.4.2.</span> <span class="toc-text">覆盖任意地址内存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#覆盖小数字"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">覆盖小数字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#覆盖大数字"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">覆盖大数字</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整数溢出"><span class="toc-number">1.5.</span> <span class="toc-text">整数溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#上界溢出"><span class="toc-number">1.5.1.</span> <span class="toc-text">上界溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下界溢出"><span class="toc-number">1.5.2.</span> <span class="toc-text">下界溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见情况"><span class="toc-number">1.5.3.</span> <span class="toc-text">常见情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆漏洞"><span class="toc-number">1.6.</span> <span class="toc-text">堆漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#calloc"><span class="toc-number">1.6.1.</span> <span class="toc-text">calloc</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TIPS"><span class="toc-number">2.</span> <span class="toc-text">TIPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统调用"><span class="toc-number">2.1.</span> <span class="toc-text">系统调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#64位传参"><span class="toc-number">2.2.</span> <span class="toc-text">64位传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#libc-csu-init-妙用"><span class="toc-number">2.3.</span> <span class="toc-text">libc_csu_init 妙用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数输入"><span class="toc-number">2.4.</span> <span class="toc-text">函数输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的储存"><span class="toc-number">2.5.</span> <span class="toc-text">变量的储存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hijack-GOT"><span class="toc-number">2.6.</span> <span class="toc-text">hijack GOT</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/04/01/pwnable/" title="上一篇: pwnable">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/04/01/gdb/" title="下一篇: Gdb">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/Z3/">自动化解题神器————z3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/angr/">自动化解题神器————Angr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/base64/">base64</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwnable/">pwnable</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/CTF_WIKI_PWN总结/">CTF_WIKI_PWN!</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/gdb/">Gdb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/一些技巧/">杂货铺</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/栈溢出/">栈溢出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwntools/">pwntools</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/什么是格式化字符串/">fmtstr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/Docker/">Docker</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Alpaca
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("04/01/2019 23:05:00");//在此处修改你的建站时间
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+</html>

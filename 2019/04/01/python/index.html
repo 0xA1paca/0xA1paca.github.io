@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>python | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#python之旅">
+<meta name="keywords" content="code,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/python/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#python之旅">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-02T11:03:53.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python">
+<meta name="twitter:description" content="#python之旅">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Alpaca</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Valar Morghulis</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/categories">分类</a></li>
+                        
+                            <li><a href="/friends">友情链接</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
+                            
+                                <a class="fl twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Reverse/" style="font-size: 13.33px;">Reverse</a> <a href="/tags/code/" style="font-size: 13.33px;">code</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tools/" style="font-size: 16.67px;">tools</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Less Is More</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Alpaca</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Alpaca</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Valar Morghulis</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/categories">分类</a></li>
+                
+                    <li><a href="/friends">友情链接</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
+                    
+                        <a class="twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-python" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/01/python/" class="article-date">
+      <time datetime="2019-03-31T16:00:00.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python
+    </h1>
+  
+
+	  
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#python之旅<br><a id="more"></a></p>
+<h3 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h3><p>print(str, end= “”)  print可以用end= “” 来控制不换行</p>
+<p>“{x:&lt;y.zf}”.format()</p>
+<p>{&lt;参数序号&gt;：&lt;填充&gt;&lt;对齐&gt;&lt;宽度&gt;&lt;,&gt;&lt;.精度&gt;&lt;类型&gt;}     &lt;,&gt;为千位分隔符</p>
+<p>x为format中变量的序号，y为输出宽度，z为精度，&lt;^&gt;分别为靠左中右。</p>
+<p>###数字类型及操作</p>
+<p>abs()  绝对值</p>
+<p>divmov(x, y)  商余 x//y, x%y    如divmov(10, 3) 得(3, 1)</p>
+<p>pow(x, y[, z])    幂余x**y%z</p>
+<p>round(x[, d])   x保留 d位</p>
+<p>max(…)</p>
+<p>min(…)</p>
+<p>int(x)</p>
+<p>float(x)   #转换成浮点数，，，无论str还是int，</p>
+<h3 id="字符串类型及操作"><a href="#字符串类型及操作" class="headerlink" title="字符串类型及操作"></a>字符串类型及操作</h3><p>切片 &lt;字符串&gt;[M: N: K]      M开始 N前结束 K步长 <code>s[::-1]</code> 反序字符串</p>
+<p>+连接字符串</p>
+<p>*复制字符串</p>
+<p>len(x)</p>
+<p>str(x) 将x转换成字符串类型 eval(x) 转换成int</p>
+<p>hex(x) oct(x)  转换成16 8 进制</p>
+<p>chr(u)  u为Unicode编码，返回对应的字符</p>
+<p>ord(x) x为字符，返回Unicode编码</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>str.lower()</p>
+<p>str.upper()</p>
+<p>str.split(sep)   返回一个列表，如<code>&quot;a,b,c&quot;.split(&quot;,&quot;)</code>  返回<code>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</code></p>
+<p>str.count(sub)    返回sub在str里出现的次数</p>
+<p> str,replace(old, new)  将old子串换成new</p>
+<p>str.center(width[,fillchar])   str根据宽度width居中，两边用fillchar填充</p>
+<p>str.strip(chars)    去掉str左右两侧chars包含的字符</p>
+<p>str.join(iter)   在str除最后元素外的每个字符后加一个iter</p>
+<h3 id="time库"><a href="#time库" class="headerlink" title="time库"></a>time库</h3><p>####获取时间</p>
+<p>time.time()   返回时间戳 1970.1.1 0:0开始 s为单位</p>
+<p>time.ctime()   返回字符串  易读时间</p>
+<p>time.gmtime()    获取当前时间 表示为计算机可处理的时间格式</p>
+<h4 id="时间格式化"><a href="#时间格式化" class="headerlink" title="时间格式化"></a>时间格式化</h4><p>strftime(tpl, rs)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t = time.gmtime()</span><br><span class="line">time.strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>,t)</span><br><span class="line"><span class="string">'2018-01-26 12:55:20'</span></span><br></pre></td></tr></table></figure>
+<p>tpl是格式化的输出格式控制</p>
+<p>%Y年 </p>
+<p>%m月(数字) %B月份名称 %b缩写 </p>
+<p>%d日期 </p>
+<p>%A星期 %a缩写 </p>
+<p>%H时间 24h %h 时间12h </p>
+<p>%p上下午</p>
+<p> %M分钟  </p>
+<p>%s 秒</p>
+<p>strptime(str, tpl)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">timeStr = <span class="string">'2018-01-26 12:55:20'</span></span><br><span class="line">time.strptime(timeStr, <span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="程序计时"><a href="#程序计时" class="headerlink" title="程序计时"></a>程序计时</h4><p>perf_counter() </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">start = time.perf_counter()</span><br><span class="line">end = time.perf_counter()</span><br><span class="line">t = end - start</span><br></pre></td></tr></table></figure>
+<p>差值才有意义</p>
+<p>sleep(s)</p>
+<h4 id="二分支结构"><a href="#二分支结构" class="headerlink" title="二分支结构"></a>二分支结构</h4><p>表达式1 if 条件 else 表达式2</p>
+<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    </span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">  </span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    </span><br><span class="line"><span class="keyword">finally</span>:</span><br></pre></td></tr></table></figure>
+<h4 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h4><p>send() 设置种子</p>
+<p>random()产生随机数</p>
+<p>不设置种子就会使用当时的系统时间作为种子</p>
+<p>randint(a, b)  产生一个[a,b]之间的随即整数</p>
+<p>randrange(m, n[, k]) 产生一个[m, n)之间的以k为步长的随即整数</p>
+<p>getrandbits(k)   生成一个k比特长的随机整数</p>
+<p>uniform(a, b)  生成一个[a, b]之间的随机小数，精度16位</p>
+<p>choice(seq) 从序列seq中随机选择一个元素</p>
+<p>shuffle(seq)   将序列seq中的元素随机排列</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>lambda函数</p>
+<p>&lt;函数名&gt; = lambda &lt;参数&gt; : &lt;表达式&gt;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = <span class="keyword">lambda</span> x, y : x + y</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">10</span>, <span class="number">15</span>)</span><br><span class="line"><span class="number">25</span></span><br></pre></td></tr></table></figure>
+<h3 id="pyinstaller"><a href="#pyinstaller" class="headerlink" title="pyinstaller"></a>pyinstaller</h3><p><strong>可以将py文件编译成可执行文件</strong></p>
+<ul>
+<li><strong>-h</strong>: help</li>
+<li><strong>–clean</strong>: 清理打包过程中的临时文件</li>
+<li><strong>-D，–onedir</strong> ：默认值，生成dist文件夹</li>
+<li><strong>-F, –onedir</strong> : 在dist文件夹中只生成独立的打包文件</li>
+<li><strong>-i &lt;图标文件名.ico&gt;</strong> :  指定打包程序使用的图标文件</li>
+</ul>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><ul>
+<li>无序</li>
+<li>元素唯一，不相同</li>
+<li>元素不变，是不可更改的数据类型</li>
+</ul>
+<ul>
+<li>{}来表示，元素之间逗号分隔</li>
+<li>建立集合用{} 或者set()（建立空集合必备）</li>
+</ul>
+<h5 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h5><ul>
+<li>S|T     返回一个新的集合，包括S和T的所有元素</li>
+<li>S  - T 包括在S但是不在T的元素</li>
+<li>S &amp; T 同时在S和T中的元素</li>
+<li>S ^ T S和T中不相同的元素</li>
+<li>S &lt;= T     S &lt; T 返回True/False，判断S和T的子集关系</li>
+<li>S &gt;= T     S &gt; T 判断包含关系</li>
+</ul>
+<h6 id="增强操作符"><a href="#增强操作符" class="headerlink" title="增强操作符"></a>增强操作符</h6><ul>
+<li>S |= T 更新集合S，S和T中的所有元素</li>
+<li>S -= T</li>
+<li>S &amp;= T</li>
+<li>S ^= T</li>
+</ul>
+<h4 id="集合处理方法"><a href="#集合处理方法" class="headerlink" title="集合处理方法"></a>集合处理方法</h4><ul>
+<li>S.add(x)  将x增加到S</li>
+<li>S.discard(x)  移除X，x不在不报错</li>
+<li>S.remove(x)   同上，但是若X不在S中，产生KeyError异常</li>
+<li>S.clear()  移除所有元素</li>
+<li>S.pop() 随机返回S的一个元素，更新S，S为空则产生KeyError异常</li>
+<li>S.copy() 返回S的副本</li>
+<li>len(S)  返回S的元素个数</li>
+<li>x in S 判断x是否在S中</li>
+<li>x not in S</li>
+<li>set(x)</li>
+</ul>
+<h3 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h3><ul>
+<li>具有先后关系的的一组元素</li>
+<li>元素对象可以相同，类型可以不同</li>
+<li>元素由序号引导，通过下标访问元素</li>
+</ul>
+<h4 id="衍生"><a href="#衍生" class="headerlink" title="衍生"></a>衍生</h4><ul>
+<li>字符串类型</li>
+<li>元组类型</li>
+<li>列表类型</li>
+</ul>
+<h4 id="序列处理函数及方法"><a href="#序列处理函数及方法" class="headerlink" title="序列处理函数及方法"></a>序列处理函数及方法</h4><ul>
+<li>x in s</li>
+<li>x not in s</li>
+<li>s + t 连接两个序列</li>
+<li><strong>s*n</strong> 或 <strong>n*s</strong> 序列s复制n次</li>
+<li><strong>s[i]</strong> 返回第i个元素</li>
+<li><strong>s[i: j: k]</strong> 切片 返回i到j以k为步长的元素子序列<ul>
+<li>栗子 s[::-1] 逆向返回所有元素</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>len(s) 返回长度</li>
+<li>min(s)  </li>
+<li>max(s)</li>
+<li>s.index(x) 或 s.index(x, i, j) 返回从i到j位置，x第一次出现的位置</li>
+<li>s.count(x)  返回序列中x出现的次数</li>
+</ul>
+<h4 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h4><ul>
+<li>一旦创建，不能修改</li>
+<li>用() 或者tuple() 创建，元素间用逗号分隔</li>
+<li>可以使用()，也可以不用<ul>
+<li>如程序返回值</li>
+</ul>
+</li>
+</ul>
+<h4 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h4><ul>
+<li>创建之后可以修改</li>
+<li>用[] 或list() 来创建，逗号分隔</li>
+<li>元素类型可以不同，没有长度限制</li>
+</ul>
+<ul>
+<li>赋值<ul>
+<li>t = s 类似重新命名</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>ls[i, j, k] = lt 将i到j步长为k的元素替换为lt</p>
+</li>
+<li><p>del ls[i] 删除第i元素</p>
+</li>
+<li>del ls[i, j, k]</li>
+<li>ls +=lt lt加到ls ，更新ls</li>
+<li>ls *= n 更新ls，元素重复n遍</li>
+</ul>
+<ul>
+<li>ls.append(x) 在最后加一个x</li>
+<li>ls.clear() 删除全部元素</li>
+<li>ls.copy() 复制列表，生成新的列表</li>
+<li>ls .insert(i, x) 第i位置增加x</li>
+<li>ls.pop(i) 第i位置的元素取出并删除</li>
+<li>ls.remove(x) 删了第一个出现的x</li>
+<li>ls.reverse()  将元素反转   </li>
+</ul>
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><p>理解“<strong>映射</strong>”：键(索引)和值(数据)的对应</p>
+<ul>
+<li>键值对：键是数据索引的扩展</li>
+<li>字典是键值对的<strong>集合</strong>，键值对之间无序</li>
+<li>采用大括号{} 和dict()创建，键值对用冒号表示，逗号分隔</li>
+</ul>
+<h4 id="字典处理函数及操作方法"><a href="#字典处理函数及操作方法" class="headerlink" title="字典处理函数及操作方法"></a>字典处理函数及操作方法</h4><ul>
+<li>del d[k] 删除字典d中键k对应的数据值</li>
+<li>k in d   键k是否在字典d中</li>
+<li>d.key() 返回字典d中所有的键信息</li>
+<li>d.values()  返回字典d中所有的值信息  <ul>
+<li>返回值可以用for in来遍历，但是不能当列表来操作</li>
+</ul>
+</li>
+<li>d.items()  返回字典d中所有键值对的信息</li>
+<li><code>d.get(k, &lt;default&gt;)</code> 返回键k对应的值，不存在则返回<code>&lt;default&gt;</code>值</li>
+<li><code>d.pop(k, &lt;default&gt;)</code> 取出</li>
+<li>d.popitem() 随机从字典d中取出一个键值对，元组形式返回</li>
+<li>d.clear() 清空</li>
+<li>len(d)  返回元素个数</li>
+</ul>
+<p>栗子 向d新增两个键值对元素 d[“a”] = 1; d[“b”] = 2</p>
+<h3 id="jieba库"><a href="#jieba库" class="headerlink" title="jieba库"></a>jieba库</h3><p>中文分词</p>
+<p>安装<code>pip install jieba</code></p>
+<h4 id="三种模式"><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h4><ul>
+<li>精确模式<ul>
+<li>jieba.lcut(s) 精确模式，返回一个列表类型 的分词结果</li>
+</ul>
+</li>
+<li>全模式 <ul>
+<li>jieba.lcut(s, cut_all=True)</li>
+</ul>
+</li>
+<li>搜索引擎模式<ul>
+<li>jieba.lcut_for_search(s) </li>
+</ul>
+</li>
+<li>jieba.add_word(w) 向分词词典增加新词w</li>
+</ul>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><h4 id="文件的打开和关闭"><a href="#文件的打开和关闭" class="headerlink" title="文件的打开和关闭"></a>文件的打开和关闭</h4><p>&lt;变量名&gt; = open(&lt;文件名&gt;, &lt;打开模式&gt;)</p>
+<h5 id="打开模式"><a href="#打开模式" class="headerlink" title="打开模式"></a>打开模式</h5><ul>
+<li>r 只读，若文件不存在返回FileNotFountError</li>
+<li>w 覆盖写模式，存在则完全覆盖</li>
+<li>x 创建写模式，存在则返回FileExistsError</li>
+<li>a 追加写模式，存在则在最后追加内容</li>
+<li>b 二进制</li>
+<li>t 文本文件模式</li>
+<li><strong>+</strong> 增加功能</li>
+</ul>
+<p>&lt;变量名&gt;.close()</p>
+<h4 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h4><ul>
+<li>f.read()  读入全部内容，如果给参数则读入size长度</li>
+<li>f.readline() 读入一行内容，如果给参数则读入前size个</li>
+<li>f.readllines() 读入所有行，以每行为元素形成 <strong>列表</strong>  如果给参数，读入前hint行</li>
+</ul>
+<ul>
+<li>f.write(s)  写入字符串或字节流</li>
+<li>f.writelines(lines) 将一个元素全为字符串的<strong>列表</strong>，元素拼接后写入文件</li>
+<li>f.seek(offset) 控制文件操作指针的位置 0-开头 1-当前 2-结尾</li>
+</ul>
+<p>###tip </p>
+<p><code>\</code>可以给没写完的程序语句换行</p>
+<p><code>type(x)</code> 返回变量x的类型</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/04/01/python/">python</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Alpaca 的个人博客">Alpaca</a></p>
+        <p><span>发布时间:</span>2019年04月01日 - 00时00分</p>
+        <p><span>最后更新:</span>2019年04月02日 - 19时03分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/01/python/" title="python">http://yoursite.com/2019/04/01/python/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/python/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/pwntools/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          pwntools
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/01/什么是格式化字符串/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">fmtstr</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#格式化字符串"><span class="toc-number">1.</span> <span class="toc-text">格式化字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串类型及操作"><span class="toc-number">2.</span> <span class="toc-text">字符串类型及操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法"><span class="toc-number">2.1.</span> <span class="toc-text">方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#time库"><span class="toc-number">3.</span> <span class="toc-text">time库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间格式化"><span class="toc-number">3.1.</span> <span class="toc-text">时间格式化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#程序计时"><span class="toc-number">3.2.</span> <span class="toc-text">程序计时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二分支结构"><span class="toc-number">3.3.</span> <span class="toc-text">二分支结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常处理"><span class="toc-number">3.4.</span> <span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#随机数"><span class="toc-number">3.5.</span> <span class="toc-text">随机数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">4.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pyinstaller"><span class="toc-number">5.</span> <span class="toc-text">pyinstaller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合"><span class="toc-number">6.</span> <span class="toc-text">集合</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#集合运算"><span class="toc-number">6.0.1.</span> <span class="toc-text">集合运算</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#增强操作符"><span class="toc-number">6.0.1.1.</span> <span class="toc-text">增强操作符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集合处理方法"><span class="toc-number">6.1.</span> <span class="toc-text">集合处理方法</span></a></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#序列"><span class="toc-number">7.</span> <span class="toc-text">序列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#衍生"><span class="toc-number">7.1.</span> <span class="toc-text">衍生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#序列处理函数及方法"><span class="toc-number">7.2.</span> <span class="toc-text">序列处理函数及方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元组类型"><span class="toc-number">7.3.</span> <span class="toc-text">元组类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表类型"><span class="toc-number">7.4.</span> <span class="toc-text">列表类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典"><span class="toc-number">8.</span> <span class="toc-text">字典</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#字典处理函数及操作方法"><span class="toc-number">8.1.</span> <span class="toc-text">字典处理函数及操作方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jieba库"><span class="toc-number">9.</span> <span class="toc-text">jieba库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#三种模式"><span class="toc-number">9.1.</span> <span class="toc-text">三种模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件"><span class="toc-number">10.</span> <span class="toc-text">文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件的打开和关闭"><span class="toc-number">10.1.</span> <span class="toc-text">文件的打开和关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#打开模式"><span class="toc-number">10.1.1.</span> <span class="toc-text">打开模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件读取"><span class="toc-number">10.2.</span> <span class="toc-text">文件读取</span></a></li></ol></li>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/04/01/pwntools/" title="上一篇: pwntools">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/04/01/什么是格式化字符串/" title="下一篇: fmtstr">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/Z3/">自动化解题神器————z3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/angr/">自动化解题神器————Angr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/base64/">base64</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwnable/">pwnable</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/CTF_WIKI_PWN总结/">CTF_WIKI_PWN!</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/gdb/">Gdb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/一些技巧/">杂货铺</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/栈溢出/">栈溢出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwntools/">pwntools</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/什么是格式化字符串/">fmtstr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/Docker/">Docker</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Alpaca
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("04/01/2019 23:05:00");//在此处修改你的建站时间
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+</html>

