@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>杂货铺 | Hexo</title>
+  <title>自动化解题神器————Angr | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一些小东西">
-<meta name="keywords" content="pwn">
+  <meta name="description" content="Angr 基于z3">
+<meta name="keywords" content="pwn,Reverse,tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="杂货铺">
-<meta property="og:url" content="http://yoursite.com/2019/04/01/一些技巧/index.html">
+<meta property="og:title" content="自动化解题神器————Angr">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/angr/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="记录一些小东西">
+<meta property="og:description" content="Angr 基于z3">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-02T11:00:46.820Z">
+<meta property="og:updated_time" content="2019-04-02T11:11:22.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="杂货铺">
-<meta name="twitter:description" content="记录一些小东西">
+<meta name="twitter:title" content="自动化解题神器————Angr">
+<meta name="twitter:description" content="Angr 基于z3">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -218,11 +218,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-一些技巧" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-angr" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/04/01/一些技巧/" class="article-date">
-      <time datetime="2019-03-31T16:00:00.000Z" itemprop="datePublished">2019-04-01</time>
+      <a href="/2019/04/02/angr/" class="article-date">
+      <time datetime="2019-04-01T16:00:00.000Z" itemprop="datePublished">2019-04-02</time>
 </a>
     </div>
   
@@ -235,7 +235,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      杂货铺
+      自动化解题神器————Angr
     </h1>
   
 
@@ -247,7 +247,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/">pwn</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse/">Reverse</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/">pwn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -257,24 +257,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>记录一些小东西<br><a id="more"></a></p>
-<h1 id="64位传参"><a href="#64位传参" class="headerlink" title="64位传参"></a>64位传参</h1><p>依次为：RDI，RSI，RDX，RCX，R8和 R9 </p>
-<h1 id="查找gadget"><a href="#查找gadget" class="headerlink" title="查找gadget"></a>查找gadget</h1><p>ROPgadget –binary stack1 –only “pop|ret”</p>
-<p>objdump -d ./level5 </p>
-<h1 id="LINUX"><a href="#LINUX" class="headerlink" title="LINUX"></a>LINUX</h1><p><code>ps au</code><br>查看进程pid</p>
-<p><code>cat /proc/pid/maps</code></p>
-<p>查看进程号为pid的进程内存映射</p>
-<p>也可以用gdb打开然后<code>vmmap</code>来查看</p>
-<h1 id="查看本机ip"><a href="#查看本机ip" class="headerlink" title="查看本机ip"></a>查看本机ip</h1><p><code>/sbin/ifconfig</code></p>
-<p><code>hostname -I</code></p>
-<p><code>ip addr show</code></p>
-<h1 id="简单搭建本地服务"><a href="#简单搭建本地服务" class="headerlink" title="简单搭建本地服务"></a>简单搭建本地服务</h1><p><code>socat tcp4-listen:9999,reuseaddr,fork exec:&quot;./ret2sc&quot;</code></p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>ida ctrl+s 看节</p>
-<h1 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h1><p>程序以正常顺序读入输入，但是在内存中获取地址的时候是用小段法</p>
-<p>如 <code>0x40001010          \x11 \x22 \x33 \x44</code></p>
-<p>那么0x40001010存的地址是0x44332211</p>
-<h1 id="查看wifi密码"><a href="#查看wifi密码" class="headerlink" title="查看wifi密码"></a>查看wifi密码</h1><p>netsh wlan show profiles</p>
-<p>netsh wlan show profiles name=混沌谷主 key=clear</p>
+        <h1 id="Angr"><a href="#Angr" class="headerlink" title="Angr"></a>Angr</h1><ul>
+<li>基于z3<a id="more"></a>
+<h2 id="程序内输入"><a href="#程序内输入" class="headerlink" title="程序内输入"></a>程序内输入</h2></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angr</span><br><span class="line"></span><br><span class="line">proj = angr.Project(<span class="string">'./r100'</span>,auto_load_libs=<span class="literal">False</span>) <span class="comment">#载入程序</span></span><br><span class="line">state = proj.factory.entry_state() <span class="comment">#找入口点</span></span><br><span class="line">simgr = proj.factory.simgr(state)  <span class="comment">#从入口点开始爆破</span></span><br><span class="line">simgr.explore(find=<span class="number">0x400844</span>,avoid=<span class="number">0x400855</span>) <span class="comment">#期望路径和避免的路径</span></span><br><span class="line"><span class="keyword">print</span> simgr.found[<span class="number">0</span>].posix.dump(<span class="number">0</span>) <span class="comment">#打印正确输入</span></span><br></pre></td></tr></table></figure>
+<h2 id="参数输入"><a href="#参数输入" class="headerlink" title="参数输入"></a>参数输入</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angr</span><br><span class="line"><span class="keyword">import</span> claripy</span><br><span class="line"></span><br><span class="line">proj = angr.Project(<span class="string">'./filename'</span>,auto_load_libs=<span class="literal">False</span>) <span class="comment">#载入程序</span></span><br><span class="line">argv1 = claripy.BVS(<span class="string">'argv1'</span>, <span class="number">50</span>*<span class="number">8</span>) <span class="comment">#定义参数 比特向量</span></span><br><span class="line">state = proj.factory.entry_state(args=[<span class="string">'./filename'</span>,argv1]) <span class="comment">#找入口点</span></span><br><span class="line">simgr = proj.factory.simgr(state)  <span class="comment">#从入口点开始爆破</span></span><br><span class="line">simgr.explore(find=<span class="number">0x400844</span>,avoid=<span class="number">0x400855</span>) <span class="comment">#期望路径和避免的路径</span></span><br><span class="line"><span class="comment">#print simgr.found[0].solver.eval(argv1) 输出的是ASCII码</span></span><br><span class="line"><span class="keyword">print</span> simgr.found[<span class="number">0</span>].solver.eval(argv1,cast_to=str) <span class="comment">#以cast_to来转换成字符串</span></span><br></pre></td></tr></table></figure>
 
       
       
@@ -330,13 +318,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/04/01/一些技巧/">杂货铺</a></p>
+        <p><span>本文标题:</span><a href="/2019/04/02/angr/">自动化解题神器————Angr</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Alpaca 的个人博客">Alpaca</a></p>
-        <p><span>发布时间:</span>2019年04月01日 - 00时00分</p>
-        <p><span>最后更新:</span>2019年04月02日 - 19时00分</p>
+        <p><span>发布时间:</span>2019年04月02日 - 00时00分</p>
+        <p><span>最后更新:</span>2019年04月02日 - 19时11分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/04/01/一些技巧/" title="杂货铺">http://yoursite.com/2019/04/01/一些技巧/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/一些技巧/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/02/angr/" title="自动化解题神器————Angr">http://yoursite.com/2019/04/02/angr/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/02/angr/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -349,18 +337,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/04/01/gdb/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/02/Z3/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Gdb
+          自动化解题神器————z3
         
       </div>
     </a>
   
   
-    <a href="/2019/04/01/base64/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">base64</div>
+    <a href="/2019/04/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -371,7 +359,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#64位传参"><span class="toc-number">1.</span> <span class="toc-text">64位传参</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找gadget"><span class="toc-number">2.</span> <span class="toc-text">查找gadget</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LINUX"><span class="toc-number">3.</span> <span class="toc-text">LINUX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看本机ip"><span class="toc-number">4.</span> <span class="toc-text">查看本机ip</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简单搭建本地服务"><span class="toc-number">5.</span> <span class="toc-text">简单搭建本地服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工具"><span class="toc-number">6.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字节序"><span class="toc-number">7.</span> <span class="toc-text">字节序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看wifi密码"><span class="toc-number">8.</span> <span class="toc-text">查看wifi密码</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Angr"><span class="toc-number">1.</span> <span class="toc-text">Angr</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序内输入"><span class="toc-number">1.1.</span> <span class="toc-text">程序内输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参数输入"><span class="toc-number">1.2.</span> <span class="toc-text">参数输入</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
 
@@ -422,13 +410,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/04/01/gdb/" title="上一篇: Gdb">
+            <a href="/2019/04/02/Z3/" title="上一篇: 自动化解题神器————z3">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/04/01/base64/" title="下一篇: base64">
+            <a href="/2019/04/01/hello-world/" title="下一篇: Hello World">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>ctf_wiki | Hexo</title>
+  <title>CTF_WIKI_PWN! | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LINUX PWN">
+  <meta name="description" content="LINUX PWN 记录ctf_wiki的学习">
 <meta name="keywords" content="pwn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ctf_wiki">
+<meta property="og:title" content="CTF_WIKI_PWN!">
 <meta property="og:url" content="http://yoursite.com/2019/04/01/CTF_WIKI_PWN总结/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LINUX PWN">
+<meta property="og:description" content="LINUX PWN 记录ctf_wiki的学习">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T13:56:54.698Z">
+<meta property="og:updated_time" content="2019-04-02T11:07:35.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ctf_wiki">
-<meta name="twitter:description" content="LINUX PWN">
+<meta name="twitter:title" content="CTF_WIKI_PWN!">
+<meta name="twitter:description" content="LINUX PWN 记录ctf_wiki的学习">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -133,9 +133,9 @@
                             
                                 <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
                             
-                                <a class="fl github" target="_blank" href="https://github.com/G-A1paca" title="github">github</a>
+                                <a class="fl github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
                             
-                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
+                                <a class="fl twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
                             
                         </ul>
                     </nav>
@@ -144,7 +144,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/pwm/" style="font-size: 10px;">pwm</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
+                        <a href="/tags/Reverse/" style="font-size: 13.33px;">Reverse</a> <a href="/tags/code/" style="font-size: 13.33px;">code</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tools/" style="font-size: 16.67px;">tools</a>
                     </div>
                 </section>
                 
@@ -209,9 +209,9 @@
                     
                         <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1030595469@qq.com" title="mail">mail</a>
                     
-                        <a class="github" target="_blank" href="https://github.com/G-A1paca" title="github">github</a>
+                        <a class="github" target="_blank" href="https://github.com/0xA1paca" title="github">github</a>
                     
-                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                        <a class="twitter" target="_blank" href="https://twitter.com/0xA1paca" title="twitter">twitter</a>
                     
                 </div>
             </nav>
@@ -235,7 +235,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ctf_wiki
+      CTF_WIKI_PWN!
     </h1>
   
 
@@ -257,8 +257,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="LINUX-PWN"><a href="#LINUX-PWN" class="headerlink" title="LINUX PWN"></a>LINUX PWN</h1><a id="more"></a>
-<p>[TOC]</p>
+        <h1 id="LINUX-PWN"><a href="#LINUX-PWN" class="headerlink" title="LINUX PWN"></a>LINUX PWN</h1><ul>
+<li>记录ctf_wiki的学习<a id="more"></a>
+</li>
+</ul>
 <h2 id="Linux-Pwn"><a href="#Linux-Pwn" class="headerlink" title="Linux Pwn"></a>Linux Pwn</h2><h2 id="安全防护机制"><a href="#安全防护机制" class="headerlink" title="安全防护机制"></a>安全防护机制</h2><h3 id="canary"><a href="#canary" class="headerlink" title="canary"></a>canary</h3><h4 id="泄漏栈中的Canary"><a href="#泄漏栈中的Canary" class="headerlink" title="泄漏栈中的Canary"></a>泄漏栈中的Canary</h4><hr>
 <blockquote>
 <p>Canary 设计为以字节 <code>\x00</code> 结尾，本意是为了保证 Canary 可以截断字符串。<br>泄露栈中的 Canary 的思路是覆盖 Canary 的低字节，来打印出剩余的 Canary 部分。</p>
@@ -484,12 +486,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/04/01/CTF_WIKI_PWN总结/">ctf_wiki</a></p>
+        <p><span>本文标题:</span><a href="/2019/04/01/CTF_WIKI_PWN总结/">CTF_WIKI_PWN!</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Alpaca 的个人博客">Alpaca</a></p>
         <p><span>发布时间:</span>2019年04月01日 - 00时00分</p>
-        <p><span>最后更新:</span>2019年04月01日 - 21时56分</p>
+        <p><span>最后更新:</span>2019年04月02日 - 19时07分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/04/01/CTF_WIKI_PWN总结/" title="ctf_wiki">http://yoursite.com/2019/04/01/CTF_WIKI_PWN总结/</a>
+            <span>原始链接:</span><a class="post-url" href="/2019/04/01/CTF_WIKI_PWN总结/" title="CTF_WIKI_PWN!">http://yoursite.com/2019/04/01/CTF_WIKI_PWN总结/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/04/01/CTF_WIKI_PWN总结/　　作者: Alpaca" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -513,8 +515,8 @@
     </a>
   
   
-    <a href="/2019/04/01/pwntools/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">pwntools</div>
+    <a href="/2019/04/01/Docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Docker</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -582,12 +584,12 @@
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/04/01/pwntools/" title="下一篇: pwntools">
+            <a href="/2019/04/01/Docker/" title="下一篇: Docker">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/My-New-Post/">My New Post</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/gdb/">Gdb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwnable/">pwnable</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/一些技巧/">some ！</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/栈溢出/">栈溢出</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/base64/">base64</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/CTF_WIKI_PWN总结/">ctf_wiki</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwntools/">pwntools</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/什么是格式化字符串/">fmtstr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/Docker/">Docker</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/Z3/">自动化解题神器————z3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/angr/">自动化解题神器————Angr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwnable/">pwnable</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/gdb/">Gdb</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/一些技巧/">杂货铺</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/base64/">base64</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/CTF_WIKI_PWN总结/">CTF_WIKI_PWN!</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/Docker/">Docker</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/pwntools/">pwntools</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/python/">python</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/什么是格式化字符串/">fmtstr</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/01/栈溢出/">栈溢出</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
